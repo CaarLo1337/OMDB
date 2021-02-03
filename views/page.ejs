@@ -7,7 +7,12 @@
     <title>OMDB Test</title>
 </head>
 <body>
-    <h1>Test</h1>
-    <p>Test</p>
+    <%- include("templates/header"); %> 
+    Vollständiger Titel mit Leerzeichen.
+    <form action="/results" method="GET">
+        <input type="text" name="searchValue" placeholder="search movie here">
+        <input type="submit">
+    </form>
+    <%- include("templates/footer"); %>
 </body>
 </html>
