@@ -28,12 +28,12 @@ app.get("/results", (req, res) => {
     const queryString = "http://omdbapi.com/?s=" + searchedMovie + "&apikey=" + process.env.API_KEY;
     
     
-    request(queryString, function(error, response, body){
-    if(!error && response.statusCode == 200){
-        var parseData = JSON.parse(body);
-        //console.log(parseData["Search"][0]["Title"]);
-        res.render("results", {data: parseData});
-    }
+    request(queryString, function(error, response, body) {
+        if(!error && response.statusCode == 200){
+            var parseData = JSON.parse(body);
+            //console.log(parseData["Search"][0]["Title"]);
+            res.render("results", {data: parseData});
+        }
     });
 });
 

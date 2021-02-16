@@ -10,19 +10,11 @@
     <%- include("templates/header"); %> 
     <h1>Results Page</h1>
     <ul>
-    
-        <% for(var i = 0; i < data.Search.length; i++){ %>
-            <li>
-                <strong>
-                    <%= data.Search[i].Title %>
-                </strong> 
-                - 
-                <em>
-                    <%= data.Search[i].Year %>
-                </em>
-            </li>
-        <% } %>
-    
+        <% data["Search"].forEach(function(movie){ %>
+            <p>   
+            <%- movie["Title"]; %>
+            </p>
+        <% }) %>
     </ul>
     <form>
         <button formaction="/">search again</button>
