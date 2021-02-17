@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const request = require("request");
+const rp = require('request-promise');
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -24,15 +25,36 @@ app.get("/", (req, res) => {
 });
 
 app.get("/results", (req, res) => {
-    const searchedMovie = req.query.searchValue;
-    const queryString = "http://omdbapi.com/?s=" + searchedMovie + "&apikey=" + process.env.API_KEY;
-    
-    
-    request(queryString, function(error, response, body) {
-        if(!error && response.statusCode == 200){
-            var parseData = JSON.parse(body);
-            //console.log(parseData["Search"][0]["Title"]);
-            res.render("results", {data: parseData});
+    const searchedMovie = 'http://omdbapi.com/?s=' + req.query.movie + '&apikey=' + process.env.API_KEY;
+    const movieDetails = [];
+    var results;
+    rp(searchedMovie)
+    .then((body) => {
+        results = JSON.parse(body);
+        if(results['Response']=='True'){
+            for(let i=0; i<results['Search'].length; i++) {
+                rp('http://omdbapi.com/?i=' + results['Search'][i]['imdbID'] + '&apikey=' + process.env.API_KEY)
+                .then(data => {
+                    movieDetails.push(JSON.parse(data));
+                    if(movieDetails.length === results['Search'].length){
+                        res.render('resultspage',{results: results, keyword: req.query.movie, movieDetails: movieDetails});
+                    }
+                })
+            }
+            console.log(results['Search'].length);
+            //console.log(results);
+        } else {
+            res.render('resultspage',{results: results, keyword: req.query.movie, movieDetails: movieDetails});
+        }
+    })
+    .catch((err) => {
+        try{
+            const displayError = JSON.parse(err['error']);
+            console.log(displayError['Error']);
+            res.render('resultspage',{results: {'Response': 'False', 'Error': displayError['Error']}, keyword: req.query.movie});
+        }
+        catch {
+            console.log('upps something went wrong')
         }
     });
 });

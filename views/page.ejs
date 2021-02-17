@@ -10,8 +10,8 @@
     <%- include("templates/header"); %> 
     Vollständiger Titel mit Leerzeichen.
     <form action="/results" method="GET">
-        <input type="text" name="searchValue" placeholder="search movie here">
-        <input type="submit">
+        <input type="text" name="movie" placeholder="search movie here" required>
+        <input type="submit" value="Find">
     </form>
     <%- include("templates/footer"); %>
 </body>
