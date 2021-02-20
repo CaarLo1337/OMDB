@@ -4,15 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
+    <script src="https://kit.fontawesome.com/af637b2ae8.js" crossorigin="anonymous"></script>
     <title>OMDB Test</title>
 </head>
 <body>
     <%- include("templates/header"); %> 
-    Vollständiger Titel mit Leerzeichen.
-    <form action="/results" method="GET">
-        <input type="text" name="movie" placeholder="search movie here" required>
-        <input type="submit" value="Find">
-    </form>
+    <div class="content">
+        <div class="slider">
+
+        </div>
+        <div class="moviesearch">
+            <form action="/results" method="GET">
+                <input type="text" name="movie" placeholder="search movie here" required>
+                <input type="submit" value="Find">
+            </form>
+        </div>
+        
+    </div>
+    
     <%- include("templates/footer"); %>
 </body>
 </html>
