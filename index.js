@@ -42,7 +42,6 @@ app.get("/results", (req, res) => {
                 })
             }
             console.log(results['Search'].length);
-            //console.log(results);
         } else {
             res.render('resultspage',{results: results, keyword: req.query.movie, movieDetails: movieDetails});
         }
