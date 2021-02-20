@@ -4,6 +4,8 @@
 //colors
 $main-color: #ebebeb
 $bg1: #001233
+$bg2: #0466c8
+$bg3: #002855
 $t1: #979dac
 
 * //reset
@@ -12,6 +14,8 @@ $t1: #979dac
 
 body
     background: $main-color
+
+// Header CSS
 
 .header
     background-color: $bg1
@@ -25,3 +29,17 @@ body
         font-family: 'Oswald', sans-serif;
         font-weight: bold
         padding-left: 1rem
+
+// Page CSS
+
+.content
+    .slider
+        height: 450px
+        background-color: $bg2
+    .moviesearch
+        height: 450px
+        background-color: $bg3
+        display: flex
+        align-items: center
+        justify-content: center
+    
