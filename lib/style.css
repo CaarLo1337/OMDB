@@ -47,7 +47,8 @@ body {
 }
 
 .content .moviesearch input {
-  border: 3px solid #001233;
+  border-radius: 10px;
+  border: 1px solid #001233;
   padding: 10px;
   width: 400px;
   color: #001233;
@@ -77,11 +78,17 @@ body {
 
 .content .moviesearch button {
   padding: 10px;
-  border: 3px solid #001233;
+  border: none;
   background-color: #002855;
+  outline: none;
 }
 
 .content .moviesearch button i {
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.content .moviesearch button i:active {
   color: #001233;
 }
 /*# sourceMappingURL=style.css.map */

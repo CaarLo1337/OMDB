@@ -43,7 +43,8 @@ body
         align-items: center
         justify-content: center
         input
-            border: 3px solid $bg1
+            border-radius: 10px
+            border: 1px solid $bg1
             padding: 10px
             width: 400px
             color: $bg1
@@ -54,7 +55,11 @@ body
             opacity: 0.5
         button
             padding: 10px
-            border: 3px solid $bg1
+            border: none
             background-color: $bg3
+            outline: none
             i
-                color: $bg1
+                font-size: 1.1rem
+                color: $main-color
+                &:active
+                    color: $bg1
