@@ -21,6 +21,7 @@ app.listen(3000, () => {
 });
 
 app.get("/", (req, res) => {
+    //const movieList = 'http://omdbapi.com/?i=tt' + Math.floor(Math.random() * 1285017 + 1285000) + '&apikey=' + process.env.API_KEY;
     res.render("page");
 });
 
