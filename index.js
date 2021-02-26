@@ -24,9 +24,12 @@ app.get("/", (req, res) => {
     const topTitle = [
         "WandaVision",
         "Soul",
-        "Tenet"
+        "Tenet",
+        "Palmer",
+        "Boss Level"
     ]
     let randomItem = topTitle[Math.floor(Math.random()*topTitle.length)];
+    //console.log(randomItem);
     randomMovie = 'http://omdbapi.com/?t=' + randomItem + '&apikey=' + process.env.API_KEY;
     
     //var randomId = Math.floor(Math.random() * (1286000 - 1285000) + 1285000); //random number between 1285017 and 1285000
