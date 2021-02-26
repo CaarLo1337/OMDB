@@ -21,19 +21,34 @@ app.listen(3000, () => {
 });
 
 app.get("/", (req, res) => {
-    var randomId = Math.floor(Math.random() * (1285017 - 1285000) + 1285000); //random number between 1285017 and 1285000
+    const topTitle = [
+        "WandaVision",
+        "Soul",
+        "Tenet"
+    ]
+    let randomItem = topTitle[Math.floor(Math.random()*topTitle.length)];
+    randomMovie = 'http://omdbapi.com/?t=' + randomItem + '&apikey=' + process.env.API_KEY;
+    
+    //var randomId = Math.floor(Math.random() * (1286000 - 1285000) + 1285000); //random number between 1285017 and 1285000
     //console.log(randomId.toString()); // print movieID
-    randomMovie = 'http://omdbapi.com/?i=tt' + randomId.toString() + '&apikey=' + process.env.API_KEY;
+    //randomMovie = 'http://omdbapi.com/?i=tt' + randomId.toString() + '&apikey=' + process.env.API_KEY;
+    
     const randomDetails = [];
-    var result;
+    let result;
     rp(randomMovie)
     .then((body) => {
         result = JSON.parse(body)
         //console.log(JSON.stringify(result)); //print json in console
         if(result['Response']=='True'){
-            randomDetails.push(JSON.parse(body))
-            //console.log(JSON.stringify(randomDetails));
-            res.render('page',{result: result, randomDetails: randomDetails});
+            if(result['Poster']=='N/A') {
+                res.render('error');
+            } else {
+                randomDetails.push(JSON.parse(body))
+                //console.log(JSON.stringify(randomDetails));
+                res.render('page',{result: result, randomDetails: randomDetails});
+            }
+        } else {
+            res.render('error')
         }
     })
 });

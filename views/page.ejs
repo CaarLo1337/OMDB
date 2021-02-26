@@ -11,15 +11,15 @@
     <%- include("templates/header"); %> 
     <div class="content">
         <div class="slider">
-            <% if(result['Response']==='True'){ %>
-                <div id="data" hidden><%= JSON.stringify(randomDetails) %></div>
-                <img src="<%= result['Poster']%>" onerror="this.src ='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQkmpiE3saxLv17jlQVpffuUAAtU95HJoaPRw&usqp=CAU'">
-                <p><%= result['Title']%></p>
-            <% } else{ %>
-            <h1>error</h1>
-            <% } %>  
-
-
+            <div class="moviecard">
+                <% if(result['Response']==='True'){ %>
+                    <div id="data" hidden><%= JSON.stringify(randomDetails) %></div>
+                    <img src="<%= result['Poster']%>" onerror="this.src ='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQkmpiE3saxLv17jlQVpffuUAAtU95HJoaPRw&usqp=CAU'">
+                    <p class="title"><%= result['Title']%></p>
+                <% } else{ %>
+                    <h1>error</h1>
+                <% } %>  
+            </div>
         </div>
         <div class="moviesearch">
             <form action="/results" method="GET">
