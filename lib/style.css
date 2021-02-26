@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -20,7 +21,7 @@ body {
 }
 
 .header .logo {
-  color: #979dac;
+  color: #ffffff;
   text-decoration: none;
   font-family: 'Oswald', sans-serif;
   font-weight: bold;
@@ -29,7 +30,7 @@ body {
 
 .content .slider {
   height: 500px;
-  background-color: #0466c8;
+  background-color: #ffffff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -58,7 +59,7 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   height: 400px;
-  width: 400px;
+  width: 270px;
 }
 
 .content .moviecard img {
@@ -68,13 +69,19 @@ body {
 
 .content .moviecard .title {
   padding: 10px;
-  color: #0466c8;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
   font-weight: bold;
 }
 
+.content .moviecard .mtext {
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+}
+
 .content .moviesearch {
-  height: 450px;
-  background-color: #002855;
+  height: 200px;
+  background-color: #ffffff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -87,8 +94,9 @@ body {
 }
 
 .content .moviesearch input {
-  border-radius: 10px;
-  border: 1px solid #001233;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: 2px solid #001233;
   padding: 10px;
   width: 400px;
   color: #001233;
@@ -118,17 +126,18 @@ body {
 
 .content .moviesearch button {
   padding: 10px;
-  border: none;
-  background-color: #002855;
+  background-color: #ffffff;
+  border: 2px solid #001233;
   outline: none;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .content .moviesearch button i {
-  font-size: 1.1rem;
-  color: #ffffff;
+  color: #001233;
 }
 
 .content .moviesearch button i:active {
-  color: #001233;
+  color: #0466c8;
 }
 /*# sourceMappingURL=style.css.map */
