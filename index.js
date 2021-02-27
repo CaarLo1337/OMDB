@@ -3,9 +3,12 @@ const bodyParser = require("body-parser");
 const app = express();
 const request = require("request");
 const rp = require('request-promise');
+const bcrypt = require('bcrypt');
 
 const dotenv = require('dotenv');
 dotenv.config();
+
+const users = [];
 
 //___________________________________________________
 
@@ -14,6 +17,7 @@ app.use(express.static("lib"));
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded( { extended: false}));
 
 
 app.listen(3000, () => {
@@ -92,14 +96,19 @@ app.get("/results", (req, res) => {
     });
 });
 
+
+// login
 app.get('/login', (req, res) => {
     res.render('login.ejs')
 })
 
+
+// register
 app.get('/register', (req, res) => {
     res.render('register.ejs')
 })
 
+// show error if path dont exist
 app.get("*", (req, res) => {
     res.render("error");
 });
