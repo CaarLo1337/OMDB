@@ -1,18 +1,34 @@
-<h1>Register</h1>
-<form action="/register" method="POST">
-<div>
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" required>
-</div>
-<div>
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" required>
-</div>
-<div>
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" required>
-</div>
-<button type="submit">Register</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <script
+      src="https://kit.fontawesome.com/af637b2ae8.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>OMDB Test</title>
+  </head>
+  <body>
+    <%- include("templates/header"); %>
+    <h1>Register</h1>
+    <form action="/register" method="POST">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+      <button type="submit">Register</button>
+    </form>
 
-Have an account? <a href="/login">Log in now</a>
+    Have an account? <a href="/login">Log in now</a>
+  </body>
+</html>
