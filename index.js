@@ -1,8 +1,11 @@
 const express = require("express");
-const bodyParser = require("body-parser");
+const bodyParser = require('express').json; 
 const app = express();
 const rp = require('request-promise');
 const dotenv = require('dotenv');
+
+// - import routes -
+const UserRouter = require('./api/user');
 
 // - mongodb -
 require('./config/db')
@@ -20,15 +23,16 @@ app.use(express.static("lib"));
 app.set("view engine", "ejs");
 
 // -        -
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.urlencoded( { extended: false}));
-
+app.use(bodyParser());
 
 // - Listen to Port -
 app.listen(port, () => {
     console.log('\n*  Server listening on port ' + port);
     console.log('*  http://localhost:' + port + '\n');
 });
+
+// - Route Middlewares -
+app.use('/user', UserRouter)
 
 // - Routes -
 
@@ -106,7 +110,7 @@ app.get("/results", (req, res) => {
 
 
 // login
-app.get('/login', (req, res) => {
+/*app.get('/login', (req, res) => {
     res.render('login.ejs')
 })
 
@@ -114,7 +118,7 @@ app.get('/login', (req, res) => {
 // register
 app.get('/register', (req, res) => {
     res.render('register.ejs')
-})
+}) */
 
 // show error if path dont exist
 app.get("*", (req, res) => {
