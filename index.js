@@ -1,28 +1,36 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const request = require("request");
 const rp = require('request-promise');
-const bcrypt = require('bcrypt');
-
 const dotenv = require('dotenv');
+
+// - mongodb -
+require('./config/db')
+
+// - dotenv -
 dotenv.config();
 
-const users = [];
+// - set Port -
+const port = 3000;
 
-//___________________________________________________
-
+// -        -
 app.use(express.static("lib"));
 
+// - Template Engine EJS -
 app.set("view engine", "ejs");
 
+// -        -
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded( { extended: false}));
 
 
-app.listen(3000, () => {
-    console.log('Server listening on port 3000');
+// - Listen to Port -
+app.listen(port, () => {
+    console.log('\n*  Server listening on port ' + port);
+    console.log('*  http://localhost:' + port + '\n');
 });
+
+// - Routes -
 
 app.get("/", (req, res) => {
     const topTitle = [
