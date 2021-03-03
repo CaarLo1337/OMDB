@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const { registerValidation, loginValidation } = require ('../validation');
 
 // - mongodb user model -
@@ -48,6 +49,10 @@ router.post('/login', async (req, res) => {
         // check if password is correct
         const validPass = await bcrypt.compare(req.body.password, user.password);
         if(!validPass) return res.status(400).send('Email or password! is wrong'); // '!' only for debugging
+
+        // create and assign a jwt
+        const token = jwt.sign({ _id: user._id }, process.env.JWT_TOKEN);
+        res.header('auth-token', token).send(token);
 
         res.send('Logged in!');
 
