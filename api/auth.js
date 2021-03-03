@@ -8,164 +8,49 @@ const User = require('../models/user');
 
 // - Register -
 router.post('/register', async (req, res) => {
-    // validate input 
+    // validate register input 
     const { error } = registerValidation(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
-    //check if user exists
-    
+    // check if user exists
+    const emailExist = await User.findOne({email: req.body.email});
+    if(emailExist) return res.status(400).send('Email already exists');
 
-    // create new user
+    // hash password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(req.body.password, salt);
+
+    // create new user with hashed password
     const user = new User({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: hashedPassword
     });
     // save user to db
     try{ 
         const savedUser = await user.save();
-        res.send(savedUser);
+        res.send({ user: user._id });
     }catch(err){
         res.status(400).send(err);
     }
 });
 
-/* router.post('/register', (req, res) => {
-    let {name, email, password, dateOfBirth} = req.body;
-    name = name.trim();
-    email = email.trim();
-    password = password.trim();
-    dateOfBirth = dateOfBirth.trim();
+// - Login - 
+router.post('/login', async (req, res) => {
+        // validate login input 
+        const { error } = loginValidation(req.body);
+        if (error) return res.status(400).send(error.details[0].message);
 
-    if(name == "" || email == "" || password == "" || dateOfBirth == "") {
-        res.json({
-            status: "failed",
-            message: "emty input fields!"
-        })
-    } else if (!/^[a-zA-Z ]*$/.test(name)) {
-        res.json({
-            status: "failed",
-            message: "invalid name entered"
-        })
-    } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-        res.json({
-            status: "failed",
-            message: "invalid email entered"
-        })
-    } else if (!new Date(dateOfBirth).getTime()) {
-        res.json({
-            status: "failed",
-            message: "invalid date of birth entered"
-        })
-    } else if (password.length < 8) {
-        res.json({
-            status: "failed",
-            message: "password is to short"
-        }) 
-    } else {
-        //checking if user allready exists
-        User.find({email}).then(result => {
-            if (result.length) {
-                res.json({
-                    status: "failed",
-                    message: "user with this email already exists"
-                })
-            } else {
-                // create new user
-                
-                // password handling
-                const saltRounds = 10;
-                bcrypt.hash(password, saltRounds).then(hashedPassword => {
-                    const newUser = new User({
-                        name,
-                        email,
-                        password: hashedPassword,
-                        dateOfBirth,
-                    });
+         // check if email exists
+        const user = await User.findOne({email: req.body.email});
+        if(!user) return res.status(400).send('Email! or password is wrong'); // '!' only for debugging
 
-                    newUser.save().then(result => {
-                        res.json({
-                            status: "success",
-                            message: "signup successful",
-                            data: result
-                        })
-                    })
-                    .catch(err => {
-                        res.json({
-                            status: "failed",
-                            message: "an error occurred while saving user account"
-                        })
-                    })
-                })
-                .catch(err => {
-                    res.json({
-                        status: "failed",
-                        message: "an error occurred while hashing password"
-                    })
-                })
-            }
-        }).catch(err => {
-            console.log(err);
-            res.json({
-                status: "failed",
-                message: "an error occurred while checking for existing user!"
-            })
-        })
-    }
-})
+        // check if password is correct
+        const validPass = await bcrypt.compare(req.body.password, user.password);
+        if(!validPass) return res.status(400).send('Email or password! is wrong'); // '!' only for debugging
 
-// - Login -
-router.post('/login', (req, res) => {
-    let {email, password} = req.body;
-    email = email.trim();
-    password = password.trim();
+        res.send('Logged in!');
 
-    if(email == "" || password == "") {
-        res.json({
-            status: "failed",
-            message: "empty credentials"
-        })
-    } else {
-        //check if user exists
-        User.find({email})
-        .then(data => {
-            if(data.length) {
-                // user exists
-                const hashedPassword = data[0].password;
-                bcrypt.compare(password, hashedPassword).then(result => {
-                    if(result) {
-                        res.json({
-                            status: "success",
-                            message: "login successful",
-                            data: data
-                        })
-                    } else {
-                        res.json({
-                            status: "failed",
-                            message: "invalid password entered"
-                        })
-                    }
-                })
-                .catch(err => {
-                    res.json({
-                        status: "failed",
-                        message: "an error occurred while comparing passwords"
-                    })
-                })
-            } else {
-                res.json({
-                    status: "failed",
-                    message: "invalid credentials"
-                })
-            }
-        })
-        .catch(err => {
-            res.json({
-                status: "failed",
-                message: "an error occured while checking for existing user"
-            })
-        })
-    }
-})
-*/
+});
+
 module.exports = router; 
