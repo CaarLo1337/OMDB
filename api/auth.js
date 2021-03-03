@@ -1,12 +1,36 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
 const bcrypt = require('bcrypt');
+const { registerValidation, loginValidation } = require ('../validation');
 
 // - mongodb user model -
-const User = require('./../models/user');
+const User = require('../models/user');
+
 
 // - Register -
-router.post('/register', (req, res) => {
+router.post('/register', async (req, res) => {
+    // validate input 
+    const { error } = registerValidation(req.body);
+    if (error) return res.status(400).send(error.details[0].message);
+
+    //check if user exists
+    
+
+    // create new user
+    const user = new User({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password
+    });
+    // save user to db
+    try{ 
+        const savedUser = await user.save();
+        res.send(savedUser);
+    }catch(err){
+        res.status(400).send(err);
+    }
+});
+
+/* router.post('/register', (req, res) => {
     let {name, email, password, dateOfBirth} = req.body;
     name = name.trim();
     email = email.trim();
@@ -143,5 +167,5 @@ router.post('/login', (req, res) => {
         })
     }
 })
-
-module.exports = router;
+*/
+module.exports = router; 

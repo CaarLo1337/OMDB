@@ -5,9 +5,9 @@ const rp = require('request-promise');
 const dotenv = require('dotenv');
 
 // - import routes -
-const UserRouter = require('./api/user');
+const UserRouter = require('./api/auth');
 
-// - mongodb -
+// - mongodb connection -
 require('./config/db')
 
 // - dotenv -
