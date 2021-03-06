@@ -11,7 +11,9 @@ const User = require('../models/user');
 router.post('/register', async (req, res) => {
     // validate register input 
     const { error } = registerValidation(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
+    //if (error) return res.status(400).send(error.details[0].message);
+    //console.log(req.body.name) - only for debugging 
+    if (error) return res.status(400).send(error);
 
     // check if user exists
     const emailExist = await User.findOne({email: req.body.email});
@@ -30,7 +32,8 @@ router.post('/register', async (req, res) => {
     // save user to db
     try{ 
         const savedUser = await user.save();
-        res.send({ user: user._id });
+        //res.send({ user: user._id });
+        res.redirect('/user/login');
     }catch(err){
         res.status(400).send(err);
     }
@@ -51,11 +54,22 @@ router.post('/login', async (req, res) => {
         if(!validPass) return res.status(400).send('Email or password! is wrong'); // '!' only for debugging
 
         // create and assign a jwt
-        const token = jwt.sign({ _id: user._id }, process.env.JWT_TOKEN);
-        res.header('auth-token', token).send(token);
-
-        res.send('Logged in!');
-
+        const accessToken = jwt.sign({ _id: user._id }, process.env.JWT_TOKEN, { expiresIn: 86400 });
+        //const refreshToken = jwt.sign({ _id: user._id }, process.env.REFRESH_TOKEN);
+        res.header('auth-token', accessToken).send(accessToken);
+        //res.json({ accessToken: accessToken, refreshToken: refreshToken })
+        //res.send('Logged in!');
+        res.redirect('/profile');
 });
+
+
+router.get('/login', (req, res) => {
+    res.render('login.ejs')
+})
+
+// register
+router.get('/register', (req, res) => {
+    res.render('register.ejs')
+})
 
 module.exports = router; 
