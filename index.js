@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const rp = require('request-promise');
 const dotenv = require('dotenv');
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
 // - import routes -
 const UserRouter = require('./api/auth');
@@ -23,10 +25,12 @@ app.use(express.static("lib"));
 app.set("view engine", "ejs");
 
 // -        -
-//app.use(bodyParser());
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
+// -
+app.use(cors());
+app.use(cookieParser());
 
 // - Listen to Port -
 app.listen(port, () => {
