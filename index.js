@@ -1,11 +1,11 @@
 const express = require("express");
-const bodyParser = require('express').json; 
 const app = express();
 const rp = require('request-promise');
 const dotenv = require('dotenv');
 
 // - import routes -
 const UserRouter = require('./api/auth');
+const ProfileRoute = require('./api/profile');
 
 // - mongodb connection -
 require('./config/db')
@@ -23,7 +23,10 @@ app.use(express.static("lib"));
 app.set("view engine", "ejs");
 
 // -        -
-app.use(bodyParser());
+//app.use(bodyParser());
+app.use(express.urlencoded({ extended: true}));
+app.use(express.json());
+
 
 // - Listen to Port -
 app.listen(port, () => {
@@ -32,7 +35,8 @@ app.listen(port, () => {
 });
 
 // - Route Middlewares -
-app.use('/user', UserRouter)
+app.use('/user', UserRouter);
+app.use('/profile', ProfileRoute);
 
 // - Routes -
 
@@ -107,18 +111,6 @@ app.get("/results", (req, res) => {
         }
     });
 });
-
-
-// login
-/*app.get('/login', (req, res) => {
-    res.render('login.ejs')
-})
-
-
-// register
-app.get('/register', (req, res) => {
-    res.render('register.ejs')
-}) */
 
 // show error if path dont exist
 app.get("*", (req, res) => {
