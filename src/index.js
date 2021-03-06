@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require('path')
 const app = express();
 const rp = require('request-promise');
 const dotenv = require('dotenv');
@@ -6,11 +7,11 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
 // - import routes -
-const UserRouter = require('./api/auth');
-const ProfileRoute = require('./api/profile');
+const UserRouter = require('../src/api/routes/auth');
+const ProfileRoute = require('../src/api/routes/profile');
 
 // - mongodb connection -
-require('./config/db')
+require('./config/db');//('../config/db')
 
 // - dotenv -
 dotenv.config();
@@ -19,7 +20,7 @@ dotenv.config();
 const port = process.env.PORT || 3000;
 
 // -        -
-app.use(express.static("lib"));
+app.use(express.static("src/lib"));
 
 // - Template Engine EJS -
 app.set("view engine", "ejs");
@@ -27,6 +28,7 @@ app.set("view engine", "ejs");
 // -        -
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
+app.set('views', path.join(__dirname, 'views'));
 
 // -
 app.use(cors());

@@ -1,6 +1,6 @@
 const Joi = require('joi');
 
-// - register validation
+// - register validation -
 const registerValidation = (data) => {
     const schema = Joi.object({
         name: Joi.string().min(6).required(),

@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { registerValidation, loginValidation } = require ('../validation');
+const { registerValidation, loginValidation } = require('../helpers/validation');//('../../Helpers/validation');
 
 // - mongodb user model -
 const User = require('../models/user');
@@ -12,7 +12,6 @@ router.post('/register', async (req, res) => {
     // validate register input 
     const { error } = registerValidation(req.body);
     //if (error) return res.status(400).send(error.details[0].message);
-    //console.log(req.body.name) - only for debugging 
     if (error) return res.status(400).send(error);
 
     // check if user exists
@@ -32,7 +31,7 @@ router.post('/register', async (req, res) => {
     // save user to db
     try{ 
         const savedUser = await user.save();
-        //res.send({ user: user._id });
+        // redirect to login
         res.redirect('/user/login');
     }catch(err){
         res.status(400).send(err);
