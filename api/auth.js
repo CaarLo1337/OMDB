@@ -54,11 +54,16 @@ router.post('/login', async (req, res) => {
         if(!validPass) return res.status(400).send('Email or password! is wrong'); // '!' only for debugging
 
         // create and assign a jwt
-        const accessToken = jwt.sign({ _id: user._id }, process.env.JWT_TOKEN, { expiresIn: 86400 });
+        const accessToken = await jwt.sign({ _id: user._id }, process.env.JWT_TOKEN, { expiresIn: 86400 });
         //const refreshToken = jwt.sign({ _id: user._id }, process.env.REFRESH_TOKEN);
-        res.header('auth-token', accessToken).send(accessToken);
+        //res.header('auth-token', accessToken).send(accessToken);
         //res.json({ accessToken: accessToken, refreshToken: refreshToken })
         //res.send('Logged in!');
+        res.cookie('accessToken', accessToken, {
+            httpOnly: true,
+            secure: false, // set true if using https
+            maxAge: 86400
+        });
         res.redirect('/profile');
 });
 
