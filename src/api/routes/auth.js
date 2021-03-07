@@ -37,7 +37,7 @@ router
         try{ 
             const savedUser = await user.save();
             // redirect to login
-            res.redirect('/user/login');
+            res.redirect('/login');
         }catch(err){
             res.status(400).send(err);
         }

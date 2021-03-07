@@ -41,7 +41,7 @@ app.listen(port, () => {
 });
 
 // - Route Middlewares -
-app.use('/user', UserRouter);
+app.use(UserRouter); // login & register
 app.use('/profile', ProfileRoute);
 
 // - Routes -
