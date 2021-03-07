@@ -7,39 +7,49 @@ const { registerValidation, loginValidation } = require('../helpers/validation')
 const User = require('../models/user');
 
 
-// - Register -
-router.post('/register', async (req, res) => {
-    // validate register input 
-    const { error } = registerValidation(req.body);
-    //if (error) return res.status(400).send(error.details[0].message);
-    if (error) return res.status(400).send(error);
+// - register -
+router
+    .route('/register')
+    .get((req, res) => {
+        res.render('register.ejs');
+    })
+    .post(async (req, res) => {
+        // validate register input 
+        const { error } = registerValidation(req.body);
+        //if (error) return res.status(400).send(error.details[0].message);
+        if (error) return res.status(400).send(error);
 
-    // check if user exists
-    const emailExist = await User.findOne({email: req.body.email});
-    if(emailExist) return res.status(400).send('Email already exists');
+        // check if user exists
+        const emailExist = await User.findOne({email: req.body.email});
+        if(emailExist) return res.status(400).send('Email already exists');
 
-    // hash password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
+        // hash password
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
-    // create new user with hashed password
-    const user = new User({
-        name: req.body.name,
-        email: req.body.email,
-        password: hashedPassword
+        // create new user with hashed password
+        const user = new User({
+            name: req.body.name,
+            email: req.body.email,
+            password: hashedPassword
+        });
+        // save user to db
+        try{ 
+            const savedUser = await user.save();
+            // redirect to login
+            res.redirect('/user/login');
+        }catch(err){
+            res.status(400).send(err);
+        }
     });
-    // save user to db
-    try{ 
-        const savedUser = await user.save();
-        // redirect to login
-        res.redirect('/user/login');
-    }catch(err){
-        res.status(400).send(err);
-    }
-});
 
-// - Login - 
-router.post('/login', async (req, res) => {
+// - login - 
+router
+    .route('/login')
+    .get((req, res) => {
+        res.render('login.ejs');
+    })
+    .post(async (req, res) => {
         // validate login input 
         const { error } = loginValidation(req.body);
         if (error) return res.status(400).send(error.details[0].message);
@@ -54,26 +64,14 @@ router.post('/login', async (req, res) => {
 
         // create and assign a jwt
         const accessToken = await jwt.sign({ _id: user._id }, process.env.JWT_TOKEN, { expiresIn: 86400 });
-        //const refreshToken = jwt.sign({ _id: user._id }, process.env.REFRESH_TOKEN);
-        //res.header('auth-token', accessToken).send(accessToken);
-        //res.json({ accessToken: accessToken, refreshToken: refreshToken })
-        //res.send('Logged in!');
+        
+        //save the accessToken in a httpOnly cookie
         res.cookie('accessToken', accessToken, {
             httpOnly: true,
             secure: false, // set true if using https
             maxAge: 86400
         });
         res.redirect('/profile');
-});
-
-
-router.get('/login', (req, res) => {
-    res.render('login.ejs')
-})
-
-// register
-router.get('/register', (req, res) => {
-    res.render('register.ejs')
-})
+    });
 
 module.exports = router; 
