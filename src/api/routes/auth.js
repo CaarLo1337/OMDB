@@ -63,13 +63,13 @@ router
         if(!validPass) return res.status(400).send('Email or password! is wrong'); // '!' only for debugging
 
         // create and assign a jwt
-        const accessToken = await jwt.sign({ _id: user._id }, process.env.JWT_TOKEN, { expiresIn: 86400 });
+        const accessToken = await jwt.sign({ _id: user._id }, process.env.JWT_TOKEN, { expiresIn: 30 }); // expires in 30min
         
         //save the accessToken in a httpOnly cookie
         res.cookie('accessToken', accessToken, {
             httpOnly: true,
             secure: false, // set true if using https
-            maxAge: 86400
+            maxAge: 30 * 60000 // time in miliseconds // 30min
         });
         res.redirect('/profile');
     });
