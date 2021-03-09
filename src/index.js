@@ -5,6 +5,7 @@ const rp = require('request-promise');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 
 // - import routes -
 const UserRouter = require('../src/api/routes/auth');
@@ -40,11 +41,42 @@ app.listen(port, () => {
     console.log('*  http://localhost:' + port + '\n');
 });
 
+function isLoggedIn(req, res, next) {
+    const token = req.cookies.accessToken || '';
+    if(token) {
+        console.log('-------new try-----\n')
+        console.log('token true');
+        console.log(token);
+        try {
+            console.log(req.user);
+            const verified = jwt.verify(token, process.env.JWT_TOKEN);
+            req.user = verified;
+            console.log('\nverified req.user');
+            console.log(req.user);
+            res.locals.loggedIn = req.user;
+            next();
+        } catch(err) {
+            console.log('\ninvalid token');
+            res.locals.loggedIn = null;
+            next();
+        }
+    } else {
+        console.log('\nno token');
+        console.log(token)
+        res.locals.loggedIn = null;
+        next();
+    }
+}
+
+app.use(isLoggedIn);
+
 // - Route Middlewares -
 app.use(UserRouter); // login & register
 app.use('/profile', ProfileRoute);
 
 // - Routes -
+
+
 
 app.get("/", (req, res) => {
     const topTitle = [
@@ -74,7 +106,7 @@ app.get("/", (req, res) => {
             } else {
                 randomDetails.push(JSON.parse(body))
                 //console.log(JSON.stringify(randomDetails));
-                res.render('page',{result: result, randomDetails: randomDetails});
+                res.render('page',{result: result, randomDetails: randomDetails});  
             }
         } else {
             res.render('error')

@@ -1,8 +1,11 @@
 <div class="header">
     <a class="logo" href="/">Movie Database</a>
     <ul class="nav">
+        <% if (locals.loggedIn === null) { %>
         <li class="nav-item"><a href="/register">Register</a></li>
         <li class="nav-item"><a href="/login">Login</a></li>
-        <!--<li class="nav-item"><a href="#">Logout</a></li>-->
+        <% } else { %>
+        <li class="nav-item"><a href="#">Logout</a></li>
+        <% } %>
     </ul>
 </div>
