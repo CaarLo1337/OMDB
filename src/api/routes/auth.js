@@ -77,6 +77,7 @@ router
 router
     .route('/logout')
     .get((req, res) => {
+        res.clearCookie('accessToken'); // removes the token from userbrowser
         res.redirect('/');
     });
 
