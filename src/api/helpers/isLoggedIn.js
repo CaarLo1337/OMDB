@@ -13,6 +13,7 @@ module.exports = function(req, res, next) {
             //console.log('\nverified req.user');
             //console.log(req.user);
             res.locals.loggedIn = req.user; 
+            //console.log(res.locals);
             next();
         } catch(err) {
             //console.log('\ninvalid token');
