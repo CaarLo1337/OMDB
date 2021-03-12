@@ -64,7 +64,6 @@ router
 
         // create and assign a jwt
         const accessToken = await jwt.sign({ _id: user._id, name: user.name }, process.env.JWT_TOKEN, { expiresIn: 30* 60000 }); // expires in 30min
-        console.log(accessToken);
         //save the accessToken in a httpOnly cookie
         res.cookie('accessToken', accessToken, {
             httpOnly: true,
