@@ -11,9 +11,10 @@ module.exports = function(req, res, next) {
             const verified = jwt.verify(token, process.env.JWT_TOKEN); // check if token is valid
             req.user = verified; 
             //console.log('\nverified req.user');
-            //console.log(req.user);
+            
             res.locals.loggedIn = req.user; 
             //console.log(res.locals);
+            //console.log(req.user);
             next();
         } catch(err) {
             //console.log('\ninvalid token');
