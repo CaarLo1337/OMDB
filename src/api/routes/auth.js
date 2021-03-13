@@ -5,6 +5,8 @@ const { registerValidation, loginValidation } = require('../helpers/validation')
 
 // - mongodb user model -
 const User = require('../models/user');
+// - jwt blacklist model
+const JwtBlacklist = require('../models/jwtBlacklist');
 
 
 // - register -
@@ -75,9 +77,19 @@ router
 
 router
     .route('/logout')
-    .get((req, res) => {
-        res.clearCookie('accessToken'); // removes the token from userbrowser
-        res.redirect('/');
+    .get( async (req, res) => {
+        
+        const oldJwt = new JwtBlacklist({
+            token: req.cookies.accessToken
+        });
+        try{ 
+            const savedOldJwt = await oldJwt.save();
+            res.clearCookie('accessToken'); // removes the token from userbrowser
+            // redirect to home
+            res.redirect('/');
+        }catch(err){
+            res.status(400).send(err);
+        }
     });
 
 
