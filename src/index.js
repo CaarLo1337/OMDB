@@ -13,9 +13,9 @@ const UserRouter = require('../src/api/routes/auth'); // '/login' & '/register'
 const ProfileRoute = require('../src/api/routes/profile'); // '/profile' 
 
 
-
+const { isLoggedIn } = require('../src/api/helpers/isLoggedIn');
 // - import helpers -
-const isLoggedIn = require('../src/api/helpers/isLoggedIn'); // check if user is logged in
+//const isLoggedIn = require('../src/api/helpers/isLoggedIn'); // check if user is logged in
 
 
 
@@ -42,8 +42,8 @@ app.use(express.static("src/lib"));
 
 
 
-// - use helpers -
-app.use(isLoggedIn);
+// **Routes**
+app.get('*', isLoggedIn);
 
 
 
