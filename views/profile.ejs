@@ -11,6 +11,11 @@
     <%- include("partials/header"); %> 
     <div class="content">
         Profile
+        <% if (locals.isadmin === 0) { %>
+                Hello User
+            <% } else { %>
+                Hello Admin
+            <% } %>
     </div>
     
     <%- include("partials/footer"); %>
