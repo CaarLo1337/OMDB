@@ -3,34 +3,21 @@ const express = require("express");
 const path = require('path')
 const app = express();
 const cookieParser = require('cookie-parser');
+
+// dotenv
 const dotenv = require('dotenv');
 dotenv.config();
 
-
-// - import routes -
-const MainRouter = require('./routes/home'); // '/' main page , '/results' moviesearch
-const UserRouter = require('./routes/auth'); // '/login' & '/register'
-const ProfileRoute = require('./routes/profile'); // '/profile' 
-
-
+//
 const { isLoggedIn } = require('./controllers/isLoggedIn');
-// - import helpers -
-//const isLoggedIn = require('../src/api/helpers/isLoggedIn'); // check if user is logged in
-
-
-
-// - set Port -
-const port = process.env.PORT || 3000;
 
 
 // - mongodb connection -
 require('./config/db');
 
 
-
 // - Template Engine EJS -
 app.set("view engine", "ejs");
-
 
 
 // ---------------------------
@@ -41,17 +28,20 @@ app.use(cookieParser());
 app.use(express.static("public"));
 
 
-
-// **Routes**
+// - routes -
 app.get('*', isLoggedIn);
 
 
+// - import routes -
+const mainRoutes = require('./routes/home'); // '/' main page , '/results' moviesearch
+const authRoutes = require('./routes/auth'); // '/login' & '/register'
+const ProfileRoute = require('./routes/profile'); // '/profile' 
+
 
 // - Route Middlewares -
-app.use(MainRouter);
-app.use(UserRouter); // login & register
+app.use(mainRoutes);
+app.use(authRoutes); // login & register
 app.use('/profile', ProfileRoute);
-
 
 
 // show error if path dont exist
@@ -59,6 +49,9 @@ app.get("*", (req, res) => {
     res.render("error");
 });
 
+
+// - set port -
+const port = process.env.PORT || 3000;
 
 
 // - Listen to Port -
