@@ -7,7 +7,7 @@
     <title>OMDB Test</title>
 </head>
 <body>
-    <%- include("templates/header"); %> 
+    <%- include("partials/header"); %> 
     <% if(results['Response']==='True'){ %>
         <div id="data" hidden><%= JSON.stringify(movieDetails) %></div>
         <% movieDetails.forEach((data)=>{ %>
@@ -24,6 +24,6 @@
     <form>
         <button formaction="/">search again</button>
     </form>
-    <%- include("templates/footer"); %>
+    <%- include("partials/footer"); %>
 </body>
 </html>

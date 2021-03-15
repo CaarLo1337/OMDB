@@ -8,12 +8,12 @@ dotenv.config();
 
 
 // - import routes -
-const MainRouter = require('../src/api/routes/home'); // '/' main page , '/results' moviesearch
-const UserRouter = require('../src/api/routes/auth'); // '/login' & '/register'
-const ProfileRoute = require('../src/api/routes/profile'); // '/profile' 
+const MainRouter = require('./routes/home'); // '/' main page , '/results' moviesearch
+const UserRouter = require('./routes/auth'); // '/login' & '/register'
+const ProfileRoute = require('./routes/profile'); // '/profile' 
 
 
-const { isLoggedIn } = require('../src/api/helpers/isLoggedIn');
+const { isLoggedIn } = require('./controllers/isLoggedIn');
 // - import helpers -
 //const isLoggedIn = require('../src/api/helpers/isLoggedIn'); // check if user is logged in
 
@@ -38,7 +38,7 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 app.set('views', path.join(__dirname, 'views'));
 app.use(cookieParser());
-app.use(express.static("src/lib"));
+app.use(express.static("public"));
 
 
 
