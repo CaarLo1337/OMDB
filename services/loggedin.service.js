@@ -3,7 +3,7 @@ const User = require('../models/user.model');
 
 const isLoggedIn = (req, res, next) => {
     const token = req.cookies.accessToken;
-
+    
     if(token) {
         jwt.verify(token, process.env.JWT_TOKEN, async (err, decodedToken) => {
             if (err) {
