@@ -13,7 +13,7 @@ const { isLoggedIn } = require('./controllers/isLoggedIn');
 
 
 // - mongodb connection -
-require('./config/db');
+require('./config/db.config');
 
 
 // - Template Engine EJS -
@@ -33,15 +33,15 @@ app.get('*', isLoggedIn);
 
 
 // - import routes -
-const mainRoutes = require('./routes/home'); // '/' main page , '/results' moviesearch
-const authRoutes = require('./routes/auth'); // '/login' & '/register'
-const ProfileRoute = require('./routes/profile'); // '/profile' 
+const mainRoutes = require('./routes/home.routes'); // '/' main page , '/results' moviesearch
+const authRoutes = require('./routes/auth.routes'); // '/login' & '/register'
+const profileRoutes = require('./routes/profile.routes'); // '/profile' 
 
 
 // - Route Middlewares -
 app.use(mainRoutes);
 app.use(authRoutes); // login & register
-app.use('/profile', ProfileRoute);
+app.use('/profile', profileRoutes);
 
 
 // show error if path dont exist
