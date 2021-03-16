@@ -2,9 +2,9 @@ const router = require('express').Router();
 const profileController = require('../controllers/profile.controller');
 const verifyService = require('../services/verify.service');
 
-// - userprofilpage -
+// - profilpage -
 router
-    .route('/')
+    .route('/profile')
     .get(
         verifyService,
         profileController.profile_get);
