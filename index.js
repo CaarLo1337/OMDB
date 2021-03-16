@@ -9,7 +9,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 //
-const { isLoggedIn } = require('./controllers/isLoggedIn');
+const { isLoggedIn } = require('./services/loggedin.service');
 
 
 // - mongodb connection -

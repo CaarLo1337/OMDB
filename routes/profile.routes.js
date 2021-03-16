@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const verify = require('../controllers/verifyToken');
+const verify = require('../services/verify.service');
 
 router.get('/', verify,(req, res) => {
     res.render('profile.ejs')
