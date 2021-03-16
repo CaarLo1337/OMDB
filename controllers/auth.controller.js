@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { registerValidation, loginValidation } = require('../services/auth.services');
+const authService = require('../services/auth.services');
 // - mongodb user model -
 const User = require('../models/user.model');
 
@@ -13,7 +13,7 @@ module.exports.register_get = (req, res) => {
 //register post
 module.exports.register_post = async (req, res) => {
     // validate register input 
-    const { error } = registerValidation(req.body);
+    const { error } = authService.registerValidation(req.body);
     //if (error) return res.status(400).send(error.details[0].message);
     if (error) return res.status(400).send(error);
 
@@ -49,7 +49,7 @@ module.exports.login_get = (req, res) => {
 // login post
 module.exports.login_post = async (req, res) => {
     // validate login input 
-    const { error } = loginValidation(req.body);
+    const { error } = authService.loginValidation(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
      // check if email exists

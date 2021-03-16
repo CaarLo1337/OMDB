@@ -1,8 +1,12 @@
 const router = require('express').Router();
-const verify = require('../services/verify.service');
+const profileController = require('../controllers/profile.controller');
+const verifyService = require('../services/verify.service');
 
-router.get('/', verify,(req, res) => {
-    res.render('profile.ejs')
-});
+// - userprofilpage -
+router
+    .route('/')
+    .get(
+        verifyService,
+        profileController.profile_get);
 
 module.exports = router;
