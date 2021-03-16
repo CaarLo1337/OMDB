@@ -48,6 +48,7 @@ body
 // Page CSS
 
 .content
+    background: linear-gradient(90deg, $bg3, $bg2)
     .slider
         height: 500px
         background-color: $main-color
@@ -103,3 +104,24 @@ body
                 color: $bg1
                 &:active
                     color: $bg2
+    .login
+        display: flex
+        justify-content: center
+    .form
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        width: 60%
+        color: $main-color
+        height: calc(100vh - 40px)
+        h1
+            padding: 20px
+            color: $main-color
+            font-family: 'Oswald', sans-serif;  
+            font-weight: 400
+        .email, .password
+            padding: 10px
+            input
+                width: 100%
+                height: 40px
