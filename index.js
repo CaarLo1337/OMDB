@@ -34,14 +34,16 @@ app.get('*', isLoggedIn);
 
 // - import routes -
 const mainRoutes = require('./routes/home.routes'); // '/' main page , '/results' moviesearch
-const authRoutes = require('./routes/auth.routes'); // '/login' & '/register'
+const authRoutes = require('./routes/auth.routes'); // '/login' , '/register' , '/logout'
 const profileRoutes = require('./routes/profile.routes'); // '/profile' 
+const userRoutes = require('./routes/user.routes'); // '/user'
 
 
 // - Route Middlewares -
-app.use(mainRoutes);
+app.use(mainRoutes); // home
 app.use(authRoutes); // login & register
-app.use('/profile', profileRoutes);
+app.use(profileRoutes); // profile 
+app.use(userRoutes); // user
 
 
 // show error if path dont exist
