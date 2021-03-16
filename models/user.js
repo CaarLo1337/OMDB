@@ -20,9 +20,9 @@ const userSchema = new mongoose.Schema({
         max: 1024,
         min: 6
     },
-    isAdmin: {
-        type: Number,
-        default: 0
+    role: {
+        type: String,
+        default: 'user'
     },
     date: {
         type: Date,

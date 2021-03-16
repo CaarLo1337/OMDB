@@ -12,7 +12,6 @@ const isLoggedIn = (req, res, next) => {
             } else {
                 let user = await User.findById(decodedToken._id);
                 res.locals.username = user.name;
-                res.locals.isadmin = user.isAdmin;
                 next();
             }
         })
