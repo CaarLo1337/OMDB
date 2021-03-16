@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { registerValidation, loginValidation } = require('../controllers/validation');
 // - mongodb user model -
-const User = require('../models/user');
+const User = require('../models/user.model');
 
 
 // register get
