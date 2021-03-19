@@ -14,10 +14,14 @@
     <%- include("partials/header"); %>
     <div class="content">
       <div class="login">
-        <div class="form">
+        <div class="lcontainer">
+          
           <h1>Login</h1>
+
           <form action="/login" method="POST">
+            
             <div class="email">
+              <label for="email">Email</label>
               <input
                 type="email"
                 id="email"
@@ -25,16 +29,19 @@
                 autocomplete="off"
                 required
               />
-              <label for="email">Email</label>
             </div>
+
             <div class="password">
-              <input type="password" id="password" name="password" required />
               <label for="password">Password</label>
+              <input type="password" id="password" name="password" required />
             </div>
-            <button type="submit">Login</button>
+            <div class="btnwrapper">
+            <button class="sbtn" type="submit">Login</button>
+            </div>
           </form>
 
-          Don't have an account? <a href="/register">Sign Up</a>
+          <p>Don't have an account? <a href="/register">Sign Up</a></p>
+        
         </div>
       </div>
     </div>
