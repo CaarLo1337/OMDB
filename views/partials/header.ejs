@@ -1,6 +1,13 @@
 <div class="header">
     <a class="logo" href="/">Movie Database</a>
+    <div class="moviesearch">
+        <form action="/results" method="GET">
+            <input type="text" name="movie" placeholder="Search Movie ..." autocomplete="off" required>
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
     <ul class="nav">
+        
         <% if (locals.username === null) { %>
         <li class="nav-item"><a href="/register">Register</a></li>
         <li class="nav-item"><a href="/login">Login</a></li>

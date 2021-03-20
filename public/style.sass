@@ -19,7 +19,7 @@ body
 
 .header
     background-color: $bg1
-    height: 40px
+    height: 45px
     display: flex
     align-items: center
     .logo 
@@ -28,6 +28,25 @@ body
         font-family: 'Oswald', sans-serif
         font-weight: bold
         padding-left: 1rem
+    .moviesearch
+        background-color: $main-color
+        margin-left: 2rem
+        border-radius: 40px
+        input
+            padding-left: 12px
+            height: 25px
+            width: 200px
+            background: none
+            border: none
+            outline: none
+            color: $bg4
+        button
+            padding-right: 12px
+            cursor: pointer
+            background: none
+            border: none
+            i
+                color: $bg4
     .nav
         display: flex
         justify-content: center
@@ -62,6 +81,7 @@ body
         flex-direction: column
         height: 450px
         width: 300px
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15)
         img
             padding: 10px
             max-height: 70%
@@ -74,7 +94,7 @@ body
         .mtext
             color: $main-color
             font-family: 'Roboto', sans-serif
-    .moviesearch
+    /*.moviesearch
         height: 200px
         display: flex
         align-items: center
@@ -101,7 +121,7 @@ body
             i
                 color: $bg1
                 &:active
-                    color: $bg2
+                    color: $bg2 */
     .login
         display: flex
         justify-content: center

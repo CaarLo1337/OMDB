@@ -11,7 +11,7 @@ body {
 
 .header {
   background-color: #001233;
-  height: 40px;
+  height: 45px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -26,6 +26,33 @@ body {
   font-family: 'Oswald', sans-serif;
   font-weight: bold;
   padding-left: 1rem;
+}
+
+.header .moviesearch {
+  background-color: #ffffff;
+  margin-left: 2rem;
+  border-radius: 40px;
+}
+
+.header .moviesearch input {
+  padding-left: 12px;
+  height: 25px;
+  width: 200px;
+  background: none;
+  border: none;
+  outline: none;
+  color: #979dac;
+}
+
+.header .moviesearch button {
+  padding-right: 12px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.header .moviesearch button i {
+  color: #979dac;
 }
 
 .header .nav {
@@ -59,6 +86,34 @@ body {
   height: 100vh;
   background: -webkit-gradient(linear, left top, right top, from(#002855), to(#0466c8));
   background: linear-gradient(90deg, #002855, #0466c8);
+  /*.moviesearch
+        height: 200px
+        display: flex
+        align-items: center
+        justify-content: center
+        input
+            border-top-left-radius: 10px
+            border-bottom-left-radius: 10px
+            border: 2px solid $bg1
+            padding: 10px
+            width: 400px
+            color: $bg1
+            background-color: $main-color
+            outline: none
+        ::placeholder
+            color: $bg3
+            opacity: 0.5
+        button
+            padding: 10px
+            background-color: $main-color
+            border: 2px solid $bg1
+            outline: none
+            border-top-right-radius: 10px
+            border-bottom-right-radius: 10px
+            i
+                color: $bg1
+                &:active
+                    color: $bg2 */
 }
 
 .content .slider {
@@ -92,6 +147,8 @@ body {
           flex-direction: column;
   height: 450px;
   width: 300px;
+  -webkit-box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 .content .moviecard img {
@@ -110,67 +167,6 @@ body {
 .content .moviecard .mtext {
   color: #ffffff;
   font-family: 'Roboto', sans-serif;
-}
-
-.content .moviesearch {
-  height: 200px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.content .moviesearch input {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border: 2px solid #001233;
-  padding: 10px;
-  width: 400px;
-  color: #001233;
-  background-color: #ffffff;
-  outline: none;
-}
-
-.content .moviesearch ::-webkit-input-placeholder {
-  color: #002855;
-  opacity: 0.5;
-}
-
-.content .moviesearch :-ms-input-placeholder {
-  color: #002855;
-  opacity: 0.5;
-}
-
-.content .moviesearch ::-ms-input-placeholder {
-  color: #002855;
-  opacity: 0.5;
-}
-
-.content .moviesearch ::placeholder {
-  color: #002855;
-  opacity: 0.5;
-}
-
-.content .moviesearch button {
-  padding: 10px;
-  background-color: #ffffff;
-  border: 2px solid #001233;
-  outline: none;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-.content .moviesearch button i {
-  color: #001233;
-}
-
-.content .moviesearch button i:active {
-  color: #0466c8;
 }
 
 .content .login {
