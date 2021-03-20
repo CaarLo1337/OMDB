@@ -56,13 +56,13 @@ body {
 }
 
 .content {
+  height: 100vh;
   background: -webkit-gradient(linear, left top, right top, from(#002855), to(#0466c8));
   background: linear-gradient(90deg, #002855, #0466c8);
 }
 
 .content .slider {
   height: 500px;
-  background-color: #ffffff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -90,13 +90,14 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 400px;
-  width: 270px;
+  height: 450px;
+  width: 300px;
 }
 
 .content .moviecard img {
-  max-height: 80%;
-  max-width: 80%;
+  padding: 10px;
+  max-height: 70%;
+  max-width: 70%;
 }
 
 .content .moviecard .title {
@@ -113,7 +114,6 @@ body {
 
 .content .moviesearch {
   height: 200px;
-  background-color: #ffffff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -230,6 +230,7 @@ body {
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
+  border-radius: 5px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
