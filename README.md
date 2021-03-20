@@ -3,4 +3,5 @@
 Demo https://rocky-depths-71721.herokuapp.com/
 
 ### Images
- - Login (https://bit.ly/3lxKY3N)
+ - Home (https://bit.ly/3s2jTbw)
+ - Login (https://bit.ly/3s2kf1Q)
