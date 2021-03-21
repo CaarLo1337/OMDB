@@ -18,9 +18,7 @@
           
           <h1>Login</h1>
           <% if(message.length > 0) { %>
-            <div>
-              <%= message %>
-            </div>
+            <p class="errormsg"><%= message %></p>
           <% } %> 
           <form action="/login" method="POST">
             
@@ -44,7 +42,7 @@
             </div>
           </form>
 
-          <p>Don't have an account? <a href="/register">Sign Up</a></p>
+          <p class="noacc">Don't have an account? <a href="/register">Sign Up</a></p>
         
         </div>
       </div>
