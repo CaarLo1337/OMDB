@@ -8,6 +8,11 @@ const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 dotenv.config();
 
+const session = require('express-session');
+const flash = require('connect-flash');
+
+
+
 //
 const { isLoggedIn } = require('./services/loggedin.service');
 
@@ -26,6 +31,14 @@ app.use(express.json());
 app.set('views', path.join(__dirname, 'views'));
 app.use(cookieParser());
 app.use(express.static("public"));
+
+app.use(session({
+    secret: 'secret',
+    cookie: { maxAge : 60000},
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(flash());
 
 
 // - routes -
