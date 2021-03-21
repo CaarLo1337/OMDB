@@ -43,23 +43,36 @@ module.exports.register_post = async (req, res) => {
 
 // login get
 module.exports.login_get = (req, res) => {
-    res.render('login.ejs');
+    res.render('login.ejs', { message: req.flash('message') });
 }
 
 // login post
 module.exports.login_post = async (req, res) => {
+    
     // validate login input 
     const { error } = authService.loginValidation(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
+    if (error) {
+        req.flash('message', 'invalid email or password');
+        res.redirect('/login')
+        return 
+    }
 
      // check if email exists
     const user = await User.findOne({email: req.body.email});
-    if(!user) return res.status(400).send('Email! or password is wrong'); // '!' only for debugging
+    if (!user) {
+        req.flash('message', 'email dont exist');
+        res.redirect('/login')
+        return 
+    }  
 
     // check if password is correct
     const validPass = await bcrypt.compare(req.body.password, user.password);
-    if(!validPass) return res.status(400).send('Email or password! is wrong'); // '!' only for debugging
-
+    if(!validPass) {
+        req.flash('message', 'password is wrong');
+        res.redirect('/login')
+        return 
+    }
+    
     // create and assign a jwt
     const accessToken = await jwt.sign({ _id: user._id}, process.env.JWT_TOKEN, { expiresIn: 30* 60000 }); // expires in 30min
     //save the accessToken in a httpOnly cookie

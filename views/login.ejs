@@ -17,7 +17,11 @@
         <div class="lcontainer">
           
           <h1>Login</h1>
-
+          <% if(message.length > 0) { %>
+            <div>
+              <%= message %>
+            </div>
+          <% } %> 
           <form action="/login" method="POST">
             
             <div class="email">
