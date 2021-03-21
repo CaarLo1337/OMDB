@@ -52,7 +52,7 @@ module.exports.login_post = async (req, res) => {
     // validate login input 
     const { error } = authService.loginValidation(req.body);
     if (error) {
-        req.flash('message', 'invalid email or password');
+        req.flash('message', 'Incorrect E-Mail or Password');
         res.redirect('/login')
         return 
     }
@@ -60,7 +60,7 @@ module.exports.login_post = async (req, res) => {
      // check if email exists
     const user = await User.findOne({email: req.body.email});
     if (!user) {
-        req.flash('message', 'email dont exist');
+        req.flash('message', 'Incorrect E-Mail or Password');
         res.redirect('/login')
         return 
     }  
@@ -68,7 +68,7 @@ module.exports.login_post = async (req, res) => {
     // check if password is correct
     const validPass = await bcrypt.compare(req.body.password, user.password);
     if(!validPass) {
-        req.flash('message', 'password is wrong');
+        req.flash('message', 'Incorrect E-Mail or Password');
         res.redirect('/login')
         return 
     }
