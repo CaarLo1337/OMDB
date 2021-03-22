@@ -20,7 +20,7 @@ body {
           align-items: center;
 }
 
-.header .logo {
+.logo {
   color: #ffffff;
   text-decoration: none;
   font-family: 'Oswald', sans-serif;
@@ -28,13 +28,13 @@ body {
   padding-left: 1rem;
 }
 
-.header .moviesearch {
+.moviesearch {
   background-color: #ffffff;
   margin-left: 2rem;
   border-radius: 40px;
 }
 
-.header .moviesearch input {
+.moviesearch input {
   padding-left: 12px;
   height: 25px;
   width: 200px;
@@ -44,18 +44,18 @@ body {
   color: #979dac;
 }
 
-.header .moviesearch button {
+.moviesearch button {
   padding-right: 12px;
   cursor: pointer;
   background: none;
   border: none;
 }
 
-.header .moviesearch button i {
+.moviesearch button i {
   color: #979dac;
 }
 
-.header .nav {
+.nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -70,12 +70,12 @@ body {
   right: 0;
 }
 
-.header .nav .nav-item {
+.nav-item {
   padding-left: 30px;
   list-style: none;
 }
 
-.header .nav .nav-item a {
+.nav-item a {
   color: #ffffff;
   text-decoration: none;
   font-family: 'Roboto', sans-serif;
@@ -88,7 +88,7 @@ body {
   background: linear-gradient(90deg, #002855, #0466c8);
 }
 
-.content .slider {
+.slider {
   height: 500px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -101,7 +101,7 @@ body {
           align-items: center;
 }
 
-.content .moviecard {
+.moviecard {
   border-radius: 15px;
   background-color: #002855;
   display: -webkit-box;
@@ -123,25 +123,25 @@ body {
           box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
-.content .moviecard img {
+.moviecard img {
   padding: 10px;
   max-height: 70%;
   max-width: 70%;
 }
 
-.content .moviecard .title {
+.title {
   padding: 10px;
   color: #ffffff;
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
 }
 
-.content .moviecard .mtext {
+.mtext {
   color: #ffffff;
   font-family: 'Roboto', sans-serif;
 }
 
-.content .login {
+.login {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -158,7 +158,7 @@ body {
   height: calc(100vh - 40px);
 }
 
-.content .lcontainer {
+.lcontainer {
   border-radius: 5px;
   background-color: white;
   width: 20%;
@@ -174,14 +174,14 @@ body {
           align-items: center;
 }
 
-.content .lcontainer h1 {
+.lcontainer h1 {
   padding: 20px;
   color: #001233;
   font-family: 'Oswald', sans-serif;
   font-weight: 400;
 }
 
-.content .lcontainer .email, .content .lcontainer .password {
+.email, .password {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -193,7 +193,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.content .lcontainer .email input, .content .lcontainer .password input {
+.email input, .password input {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -203,7 +203,7 @@ body {
           box-sizing: border-box;
 }
 
-.content .lcontainer .btnwrapper {
+.btnwrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -215,7 +215,7 @@ body {
           justify-content: center;
 }
 
-.content .lcontainer .btnwrapper .sbtn {
+.sbtn {
   margin: 20px;
   background-color: #014781;
   padding: 10px 16px;
@@ -235,13 +235,13 @@ body {
   font-size: 16px;
 }
 
-.content .lcontainer .noacc {
+.noacc {
   padding: 10px;
   color: #001233;
   font-family: 'Oswald', sans-serif;
 }
 
-.content .lcontainer .noacc a {
+.noacc a {
   text-decoration: none;
   color: #014781;
 }
