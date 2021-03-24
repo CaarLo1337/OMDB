@@ -22,12 +22,32 @@ body
         display: flex
         align-items: center
 
+.burger
+    margin-left: 10px
+    display: inline-block
+    cursor: pointer
+
+.bar1, .bar2, .bar3
+    width: 25px
+    height: 3px
+    background-color: $main-color
+    margin: 6px 0
+    transition: 0.5s
+
+.change .bar1
+    transform: translateY(9px) rotate(-45deg)
+
+.change .bar2
+    opacity: 0
+    
+.change .bar3
+    transform: translateY(-9px) rotate(45deg)
 .logo 
         color: $main-color
         text-decoration: none
         font-family: 'Oswald', sans-serif
         font-weight: bold
-        padding-left: 1rem
+        margin-left: 10px
 
 .moviesearch
         background-color: $main-color
@@ -49,15 +69,43 @@ body
             cursor: pointer
             background: none
             border: none
+            outline: none
             i
                 color: $bg4
-
 .nav
     display: none
 
+#mobilenav
+    opacity: 0
+    margin-top: 45px
+    z-index: 1
+    height: auto
+    width: 100%
+    position: absolute
+    top: 0
+    left: 0
+    background-color: #001233e8
+    overflow-x: hidden
+    transition: 0.5s
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+
+.mobilenav-item
+    padding: 15px 
+    list-style: none
+    a
+        color: $main-color
+        text-decoration: none
+        font-family: 'Roboto', sans-serif
+        font-weight: bold
+        font-size: 0.8rem
+
+
 .content
-        height: 100vh
-        background: linear-gradient(90deg, $bg3, $bg2)
+    height: 100vh
+    background: linear-gradient(90deg, $bg3, $bg2)
 
 .slider
     height: 500px
@@ -94,11 +142,17 @@ body
 // Tabletview
 @media (min-width: 768px)
 
+    .burger
+        display: none
+
     .moviesearch
         position: relative
         left: 0
         input
             width: 200px
+
+    .mobilenav
+        display: none
 
     .nav
         display: flex
