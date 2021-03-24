@@ -1,6 +1,6 @@
 ## Moviedatabase with OMBD API (http://www.omdbapi.com/)
 
-[Demo] (https://lit-shelf-47245.herokuapp.com/) (Desktop & Mobile)
+[Demo](https://lit-shelf-47245.herokuapp.com/) (Desktop & Mobile)
 
 ### Images
  - [Home](https://bit.ly/3s2jTbw)
