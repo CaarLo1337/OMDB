@@ -8,7 +8,8 @@ $bg2: #0466c8
 $bg3: #002855
 $bg4: #979dac
 
-* //reset
+//reset css
+*
     margin: 0
     padding: 0
 
@@ -16,6 +17,7 @@ body
     background: $main-color
 
 // Mobile view from 320px
+// Header 
 .header
         background-color: $bg1
         height: 45px
@@ -42,6 +44,7 @@ body
     
 .change .bar3
     transform: translateY(-9px) rotate(45deg)
+
 .logo 
         color: $main-color
         text-decoration: none
@@ -72,9 +75,12 @@ body
             outline: none
             i
                 color: $bg4
+
+//desktop header
 .nav
     display: none
 
+//mobile header
 #mobilenav
     opacity: 0
     margin-top: 45px
@@ -102,11 +108,12 @@ body
         font-weight: bold
         font-size: 0.8rem
 
-
+//content
 .content
     height: 100vh
     background: linear-gradient(90deg, $bg3, $bg2)
 
+// '/' movieslider with random cards
 .slider
     height: 500px
     display: flex
@@ -139,11 +146,91 @@ body
     font-family: 'Roboto', sans-serif
 
 
+// '/login'
+.login
+        display: flex
+        justify-content: center
+        flex-direction: column
+        align-items: center
+        height: calc(100vh - 40px)
+
+.lcontainer
+        border-radius: 5px
+        background-color: white
+        width: 300px
+        display: flex
+        flex-direction: column
+        align-items: center
+        h1
+            padding: 20px
+            color: $bg1
+            font-family: 'Oswald', sans-serif
+            font-weight: 400
+
+.email, .password
+        display: flex
+        flex-direction: column
+        padding: 10px
+        font-family: 'Roboto', sans-serif
+        label
+            padding-left: 5px
+            color: $bg3
+        input
+            padding: 12px 20px
+            display: inline-block
+            outline: none
+            border: none
+            border-bottom: 1px solid #ccc
+            //border-radius: 5px
+            box-sizing: border-box
+            &:focus
+                border-bottom: 2px solid #ccc
+                
+
+
+
+
+
+
+.btnwrapper
+        display: flex
+        align-items: center
+        justify-content: center
+
+.sbtn
+    margin: 20px
+    background-color: #014781
+    padding: 10px 16px
+    border-radius: 5px
+    border: none
+    cursor: pointer
+    display: flex
+    align-items: center
+    justify-content: center
+    color: $main-color    
+    font-size: 16px  
+
+
+.noacc
+    padding: 10px
+    color: $bg1
+    font-family: 'Oswald', sans-serif
+    a
+        text-decoration: none
+        color: #014781
+
+// error messages
+.errormsg
+    padding: 10px
+    color: red
+    font-family: 'Oswald', sans-serif 
+
 // Tabletview
 @media (min-width: 768px)
-
+    //mobile nav
     .burger
         display: none
+
 
     .moviesearch
         position: relative
@@ -154,6 +241,7 @@ body
     .mobilenav
         display: none
 
+    // destop nav
     .nav
         display: flex
         justify-content: center
@@ -177,75 +265,8 @@ body
     .moviecard
         height: 450px
         width: 300px
+    
 
-    // login
-    .login
-        display: flex
-        justify-content: center
-        flex-direction: column
-        align-items: center
-        height: calc(100vh - 40px)
-
-
-    .lcontainer
-        border-radius: 5px
-        background-color: white
-        width: 20%
-        display: flex
-        flex-direction: column
-        align-items: center
-        h1
-            padding: 20px
-            color: $bg1
-            font-family: 'Oswald', sans-serif
-            font-weight: 400
-
-
-    .email, .password
-        display: flex
-        flex-direction: column
-        padding: 10px
-        font-family: 'Roboto', sans-serif
-        input
-            padding: 12px 20px
-            margin: 8px 0
-            display: inline-block
-            border: 1px solid #ccc
-            border-radius: 5px
-            box-sizing: border-box
-
-
-    .btnwrapper
-        display: flex
-        align-items: center
-        justify-content: center
-
-    .sbtn
-        margin: 20px
-        background-color: #014781
-        padding: 10px 16px
-        border-radius: 5px
-        border: none
-        cursor: pointer
-        display: flex
-        align-items: center
-        justify-content: center
-        color: $main-color    
-        font-size: 16px  
-
-
-    .noacc
-        padding: 10px
-        color: $bg1
-        font-family: 'Oswald', sans-serif
-        a
-            text-decoration: none
-            color: #014781
-
-    // error messages
-    .errormsg
-        padding: 10px
-        color: red
-        font-family: 'Oswald', sans-serif 
+    
 
                 

@@ -192,6 +192,126 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: calc(100vh - 40px);
+}
+
+.lcontainer {
+  border-radius: 5px;
+  background-color: white;
+  width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.lcontainer h1 {
+  padding: 20px;
+  color: #001233;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 400;
+}
+
+.email, .password {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.email label, .password label {
+  padding-left: 5px;
+  color: #002855;
+}
+
+.email input, .password input {
+  padding: 12px 20px;
+  display: inline-block;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.email input:focus, .password input:focus {
+  border-bottom: 2px solid #ccc;
+}
+
+.btnwrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.sbtn {
+  margin: 20px;
+  background-color: #014781;
+  padding: 10px 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.noacc {
+  padding: 10px;
+  color: #001233;
+  font-family: 'Oswald', sans-serif;
+}
+
+.noacc a {
+  text-decoration: none;
+  color: #014781;
+}
+
+.errormsg {
+  padding: 10px;
+  color: red;
+  font-family: 'Oswald', sans-serif;
+}
+
 @media (min-width: 768px) {
   .burger {
     display: none;
@@ -233,107 +353,6 @@ body {
   .moviecard {
     height: 450px;
     width: 300px;
-  }
-  .login {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    height: calc(100vh - 40px);
-  }
-  .lcontainer {
-    border-radius: 5px;
-    background-color: white;
-    width: 20%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  .lcontainer h1 {
-    padding: 20px;
-    color: #001233;
-    font-family: 'Oswald', sans-serif;
-    font-weight: 400;
-  }
-  .email, .password {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    padding: 10px;
-    font-family: 'Roboto', sans-serif;
-  }
-  .email input, .password input {
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-  }
-  .btnwrapper {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-  .sbtn {
-    margin: 20px;
-    background-color: #014781;
-    padding: 10px 16px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    color: #ffffff;
-    font-size: 16px;
-  }
-  .noacc {
-    padding: 10px;
-    color: #001233;
-    font-family: 'Oswald', sans-serif;
-  }
-  .noacc a {
-    text-decoration: none;
-    color: #014781;
-  }
-  .errormsg {
-    padding: 10px;
-    color: red;
-    font-family: 'Oswald', sans-serif;
   }
 }
 /*# sourceMappingURL=style.css.map */
