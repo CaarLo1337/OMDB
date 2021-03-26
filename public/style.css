@@ -192,7 +192,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.login {
+.login, .register {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -209,7 +209,7 @@ body {
   height: calc(100vh - 40px);
 }
 
-.lcontainer {
+.lcontainer, .rcontainer {
   border-radius: 5px;
   background-color: white;
   width: 300px;
@@ -225,14 +225,14 @@ body {
           align-items: center;
 }
 
-.lcontainer h1 {
+.lcontainer h1, .rcontainer h1 {
   padding: 20px;
   color: #001233;
   font-family: 'Oswald', sans-serif;
   font-weight: 400;
 }
 
-.email, .password {
+.email, .password, .name {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -244,12 +244,12 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.email label, .password label {
+.email label, .password label, .name label {
   padding-left: 5px;
   color: #002855;
 }
 
-.email input, .password input {
+.email input, .password input, .name input {
   padding: 12px 20px;
   display: inline-block;
   outline: none;
@@ -259,7 +259,7 @@ body {
           box-sizing: border-box;
 }
 
-.email input:focus, .password input:focus {
+.email input:focus, .password input:focus, .name input:focus {
   border-bottom: 2px solid #ccc;
 }
 

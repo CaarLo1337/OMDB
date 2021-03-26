@@ -12,17 +12,38 @@
   </head>
   <body>
     <%- include("partials/header"); %>
-    <h1>Register</h1>
-    <form action="/register" method="POST">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" autocomplete="off" required/>
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" autocomplete="off" required />
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required />
-      <button type="submit">Register</button>
-    </form>
+    <div class="content">
+      <div class="register">
+        <div class="rcontainer">
+          <h1>Register</h1>
+        
+          <form action="/register" method="POST">
 
-    Have an account? <a href="/login">Log in now</a>
+            <div class="name">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" autocomplete="off" required/>
+            </div>
+            
+            <div class="email">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="off" required />
+            </div>
+            
+            <div class="password">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" required />
+            </div>
+            
+            <div class="btnwrapper">
+              <button class="sbtn" type="submit">Register</button>
+            </div>
+            
+          </form>
+
+          <p class="noacc">Have an account? <a href="/login">Log in now</a></p> 
+        </div>
+      </div>
+    </div>
+    
   </body>
 </html>
