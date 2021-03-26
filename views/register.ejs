@@ -16,7 +16,9 @@
       <div class="register">
         <div class="rcontainer">
           <h1>Register</h1>
-        
+          <% if(message.length > 0) { %>
+            <p class="errormsg"><%= message %></p>
+          <% } %> 
           <form action="/register" method="POST">
 
             <div class="name">

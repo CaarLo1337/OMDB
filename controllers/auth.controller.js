@@ -7,19 +7,25 @@ const User = require('../models/user.model');
 
 // register get
 module.exports.register_get = (req, res) => {
-    res.render('register.ejs');
+    res.render('register.ejs', { message: req.flash('message') });
 }
 
 //register post
 module.exports.register_post = async (req, res) => {
+
     // validate register input 
     const { error } = authService.registerValidation(req.body);
-    //if (error) return res.status(400).send(error.details[0].message);
-    if (error) return res.status(400).send(error);
+    if (error) {
+        req.flash('message', 'wrong credentials');
+        res.redirect('/register');
+    }
 
     // check if user exists
     const emailExist = await User.findOne({email: req.body.email});
-    if(emailExist) return res.status(400).send('Email already exists');
+    if(emailExist) {
+        req.flash('message', 'email is allready in use');
+        res.redirect('/register');
+    }
 
     // hash password
     const salt = await bcrypt.genSalt(10);
