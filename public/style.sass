@@ -14,7 +14,7 @@ $bg4: #979dac
     padding: 0
 
 body
-    background: $main-color
+    background: linear-gradient(90deg, $bg3, $bg2)
 
 // Mobile view from 320px
 // Header 
@@ -107,11 +107,6 @@ body
         font-family: 'Roboto', sans-serif
         font-weight: bold
         font-size: 0.8rem
-
-//content
-.content
-    height: 100vh
-    background: linear-gradient(90deg, $bg3, $bg2)
 
 // '/' movieslider with random cards
 .slider
@@ -229,6 +224,17 @@ body
     color: #721c24
     font-family: 'Roboto', sans-serif 
     font-weight: 400
+
+.content
+    display: flex
+    justify-content: center
+    flex-direction: columns
+.profil
+    background-color: $main-color
+    border-radius: 10px
+    margin: 20px
+    padding: 20px
+    width: 80%
 
 // Tabletview
 @media (min-width: 768px)

@@ -6,7 +6,8 @@
 }
 
 body {
-  background: #ffffff;
+  background: -webkit-gradient(linear, left top, right top, from(#002855), to(#0466c8));
+  background: linear-gradient(90deg, #002855, #0466c8);
 }
 
 .header {
@@ -131,12 +132,6 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
   font-size: 0.8rem;
-}
-
-.content {
-  height: 100vh;
-  background: -webkit-gradient(linear, left top, right top, from(#002855), to(#0466c8));
-  background: linear-gradient(90deg, #002855, #0466c8);
 }
 
 .slider {
@@ -315,6 +310,27 @@ body {
   color: #721c24;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
+}
+
+.content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: columns;
+          flex-direction: columns;
+}
+
+.profil {
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 20px;
+  width: 80%;
 }
 
 @media (min-width: 768px) {
