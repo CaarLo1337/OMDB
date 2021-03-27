@@ -18,6 +18,7 @@ module.exports.register_post = async (req, res) => {
     if (error) {
         req.flash('message', 'wrong credentials');
         res.redirect('/register');
+        return
     }
 
     // check if user exists
@@ -25,6 +26,7 @@ module.exports.register_post = async (req, res) => {
     if(emailExist) {
         req.flash('message', 'email is allready in use');
         res.redirect('/register');
+        return
     }
 
     // hash password
