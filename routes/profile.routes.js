@@ -6,7 +6,7 @@ const verifyService = require('../services/verify.service');
 router
     .route('/profile')
     .get(
-        verifyService,
+        verifyService.verify,
         profileController.profile_get);
 
 module.exports = router;

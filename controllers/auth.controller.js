@@ -1,17 +1,25 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authService = require('../services/auth.services');
+
 // - mongodb user model -
 const User = require('../models/user.model');
 
+module.exports = {
+    register_get,
+    register_post,
+    login_get,
+    login_post,
+    logout_get
+};
 
 // register get
-module.exports.register_get = (req, res) => {
+function register_get(req, res) {
     res.render('register.ejs', { message: req.flash('message') });
 }
 
 //register post
-module.exports.register_post = async (req, res) => {
+async function register_post(req, res) {
 
     // validate register input 
     const { error } = authService.registerValidation(req.body);
@@ -50,12 +58,12 @@ module.exports.register_post = async (req, res) => {
 }
 
 // login get
-module.exports.login_get = (req, res) => {
+function login_get(req, res) {
     res.render('login.ejs', { message: req.flash('message') });
 }
 
 // login post
-module.exports.login_post = async (req, res) => {
+async function login_post(req, res) {
     
     // validate login input 
     const { error } = authService.loginValidation(req.body);
@@ -93,7 +101,7 @@ module.exports.login_post = async (req, res) => {
 }
 
 // logout get
-module.exports.logout_get = (req, res) => {
+function logout_get(req, res) {
     res.clearCookie('accessToken'); // removes the token from userbrowser
     // redirect to home
     res.redirect('/');

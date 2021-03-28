@@ -8,7 +8,7 @@ router
     .route('/user')
     .get(
         userauthService,
-        verifyService,
+        verifyService.verify,
         userController.user_get
         );
 
