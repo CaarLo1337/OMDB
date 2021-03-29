@@ -349,6 +349,7 @@ body {
   font-size: 12px;
   padding-left: 10px;
   color: #a10000;
+  text-decoration: none;
 }
 
 @media (min-width: 768px) {
