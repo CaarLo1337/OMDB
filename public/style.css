@@ -338,6 +338,7 @@ body {
       -ms-flex-align: baseline;
           align-items: baseline;
   font-family: 'Roboto', sans-serif;
+  padding: 0 0 10px 10px;
   border-bottom: 1px solid #979dac;
 }
 
@@ -350,6 +351,10 @@ body {
   padding-left: 10px;
   color: #a10000;
   text-decoration: none;
+}
+
+.profilecontent {
+  height: 500px;
 }
 
 @media (min-width: 768px) {
