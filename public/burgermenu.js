@@ -1,10 +1,10 @@
 const burgerMenu = (x) => {
     x.classList.toggle("change");
     const navbar = document.getElementById('mobilenav');
-    if (navbar.style.opacity === "1") {
-        navbar.style.opacity = "0";
+    if (navbar.style.display === "flex") {
+        navbar.style.display = "none";
       } else {
-        navbar.style.opacity = "1";
+        navbar.style.display = "flex";
       }
   }
 

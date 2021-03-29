@@ -94,7 +94,6 @@ body {
 }
 
 #mobilenav {
-  opacity: 0;
   margin-top: 45px;
   z-index: 1;
   height: auto;
@@ -106,9 +105,7 @@ body {
   overflow-x: hidden;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
