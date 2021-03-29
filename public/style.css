@@ -333,6 +333,27 @@ body {
   width: 80%;
 }
 
+.profilehead {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  font-family: 'Roboto', sans-serif;
+  border-bottom: 1px solid #979dac;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.adminname {
+  font-size: 12px;
+  padding-left: 10px;
+  color: #a10000;
+}
+
 @media (min-width: 768px) {
   .burger {
     display: none;

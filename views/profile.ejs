@@ -11,7 +11,13 @@
     <%- include("partials/header"); %> 
     <div class="content">
         <div class="profil">
-            Name: <%= locals.username %>
+            <div class="profilehead">
+                <p class="username"><%= locals.username %><p>
+                <% if (locals.admin === 'admin') { %>
+                    <p class="adminname"><%= locals.admin %></p>
+                <% } %> 
+            </div>
+            
         </div>
     </div>
     
