@@ -313,16 +313,9 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: columns;
-          flex-direction: columns;
 }
 
-.profil {
+.profil, .resultpage {
   background-color: #ffffff;
   border-radius: 10px;
   margin: 20px;
@@ -355,6 +348,36 @@ body {
 
 .profilecontent {
   height: 500px;
+}
+
+.resultmovie {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #001233;
+  margin: 5px 5px 15px 5px;
+}
+
+.resultmovie img {
+  max-height: 70%;
+  max-width: 70%;
+  padding: 15px 0px 15px 0px;
+}
+
+.resultmovie p {
+  color: white;
+  padding: 10px;
+  text-align: center;
 }
 
 @media (min-width: 768px) {

@@ -226,8 +226,6 @@ body
 
 .content
     display: flex
-    justify-content: center
-    flex-direction: columns
 
 .profil
     background-color: $main-color
@@ -254,6 +252,25 @@ body
 
 .profilecontent
     height: 500px
+
+.resultpage
+    @extend .profil
+
+.resultmovie
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    background-color: $bg1
+    margin: 5px 5px 15px 5px
+    img
+        max-height: 70%
+        max-width: 70%
+        padding: 15px 0px 15px 0px
+    p 
+        color: white
+        padding: 10px
+        text-align: center
 
 // Tabletview
 @media (min-width: 768px)

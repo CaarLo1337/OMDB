@@ -8,22 +8,28 @@
 </head>
 <body>
     <%- include("partials/header"); %> 
-    <% if(results['Response']==='True'){ %>
-        <div id="data" hidden><%= JSON.stringify(movieDetails) %></div>
-        <% movieDetails.forEach((data)=>{ %>
-            <img src="<%= data['Poster']%>" onerror="this.src ='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQkmpiE3saxLv17jlQVpffuUAAtU95HJoaPRw&usqp=CAU'">
-            <p><%= data['Title']%></p>
-            <p>IMDB rating: <%= data['imdbRating']%></p>
-            <p><%= data['Plot'].substring(0,70)%>...</p> 
-            <p>Type:<%= data['Type']%></p> 
-            <p>Genre:<%= data['Genre']%></p>           
-        <% }); %>
-    <% } else{ %>
-        <h1><%= results['Error']%></h1>
-    <% } %>  
-    <form>
-        <button formaction="/">search again</button>
-    </form>
+    <div class="content">
+        <div class="resultpage">
+            <% if(results['Response']==='True'){ %>
+                <div id="data" hidden><%= JSON.stringify(movieDetails) %></div>
+                <% movieDetails.forEach((data)=>{ %>
+                    <div class="resultmovie">
+                        <img src="<%= data['Poster']%>" onerror="this.src ='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQkmpiE3saxLv17jlQVpffuUAAtU95HJoaPRw&usqp=CAU'">
+                        <p><%= data['Title']%></p>
+                        <!--<p>IMDB rating: <%= data['imdbRating']%></p>
+                        <p><%= data['Plot'].substring(0,70)%>...</p> 
+                        <p>Type:<%= data['Type']%></p> 
+                        <p>Genre:<%= data['Genre']%></p>-->  
+                    </div>    
+                <% }); %>
+            <% } else{ %>
+                <h1><%= results['Error']%></h1>
+            <% } %>  
+            <form>
+                <button formaction="/">search again</button>
+            </form>
+        </div>
+    </div>
     <%- include("partials/footer"); %>
 </body>
 </html>
