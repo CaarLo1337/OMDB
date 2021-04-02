@@ -1,5 +1,9 @@
 const router = require('express').Router();
-const rp = require('request-promise');
+const request = require('request-promise');
+const axios = require('axios');
+const { response } = require('express');
+
+
 
 router.get("/", (req, res) => {
     const topTitle = [
@@ -19,7 +23,7 @@ router.get("/", (req, res) => {
     
     const randomDetails = [];
     let result;
-    rp(randomMovie)
+    request(randomMovie)
     .then((body) => {
         result = JSON.parse(body)
         //console.log(JSON.stringify(result)); //print json in console
@@ -37,17 +41,42 @@ router.get("/", (req, res) => {
     })
 });
 
+
+
+
+
+/*router.get("/results", (req, res) => {
+    const searchedMovie = 'http://api.tvmaze.com/search/shows?q=' + req.query.movie
+    axios.get(searchedMovie)
+        .then(response => {
+            results = response.data;
+            console.log(results)
+            console.log(results[1]['show']);
+            
+            let movieDetails = []
+            for(let i=0; i<results.length; i++) {
+                movieDetails.push(results[i]['show']['name']);
+            }
+            console.log(movieDetails);
+            res.render('movieresults');
+        })
+        .catch(error => {
+            console.log('ops');
+        })
+});*/
+
+
 router.get("/results", (req, res) => {
     const searchedMovie = 'http://omdbapi.com/?s=' + req.query.movie + '&apikey=' + process.env.API_KEY; 
     const movieDetails = [];
     var results;
-    rp(searchedMovie)
+    request(searchedMovie)
     .then((body) => {
         results = JSON.parse(body);
         //console.log(JSON.stringify(results)); //print json in console
         if(results['Response']=='True'){
             for(let i=0; i<results['Search'].length; i++) {
-                rp('http://omdbapi.com/?i=' + results['Search'][i]['imdbID'] + '&apikey=' + process.env.API_KEY)
+                request('http://omdbapi.com/?i=' + results['Search'][i]['imdbID'] + '&apikey=' + process.env.API_KEY)
                 .then(data => {
                     movieDetails.push(JSON.parse(data));
                     //console.log(JSON.stringify(movieDetails)); //print json in console
