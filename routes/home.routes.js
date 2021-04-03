@@ -41,32 +41,7 @@ router.get("/", (req, res) => {
     })
 });
 
-
-
-
-
 /*router.get("/results", (req, res) => {
-    const searchedMovie = 'http://api.tvmaze.com/search/shows?q=' + req.query.movie
-    axios.get(searchedMovie)
-        .then(response => {
-            results = response.data;
-            console.log(results)
-            console.log(results[1]['show']);
-            
-            let movieDetails = []
-            for(let i=0; i<results.length; i++) {
-                movieDetails.push(results[i]['show']['name']);
-            }
-            console.log(movieDetails);
-            res.render('movieresults');
-        })
-        .catch(error => {
-            console.log('ops');
-        })
-});*/
-
-
-router.get("/results", (req, res) => {
     const searchedMovie = 'http://omdbapi.com/?s=' + req.query.movie + '&apikey=' + process.env.API_KEY; 
     const movieDetails = [];
     var results;
@@ -100,6 +75,26 @@ router.get("/results", (req, res) => {
             console.log('upps something went wrong')
         }
     });
+});*/
+
+
+router.get("/results", (req, res) => {
+    const searchedMovie = 'http://omdbapi.com/?s=' + req.query.movie + '&apikey=' + process.env.API_KEY;
+    const movieDetails = [];
+    axios.get(searchedMovie)
+        .then(response => {
+            results = response.data;
+            //console.log(results['Search'])
+            for(let i=0; i<results['Search'].length; i++) {
+                movieDetails.push(results['Search'][i]);
+            }
+            //res.redirect('/');
+            res.render('movieresults', { movieDetails: movieDetails });
+        })
+        .catch(error => {
+            console.log('ops');
+            res.redirect('/');
+        })
 });
 
 module.exports = router; 

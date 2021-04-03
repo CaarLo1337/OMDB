@@ -10,9 +10,17 @@
     <%- include("partials/header"); %> 
     <div class="content">
         <div class="resultpage">
+            <% movieDetails.forEach((data)=>{ %>
+                <div class="resultmovie">
+                    <img src="<%= data['Poster']%>" onerror="this.src ='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQkmpiE3saxLv17jlQVpffuUAAtU95HJoaPRw&usqp=CAU'">
+                    <p><%= data['Title']%></p>
+                </div>    
+            <% }); %>
             <form>
+                <button formaction="/results">search again</button>
                 <button formaction="/">search again</button>
             </form>
+
         </div>
     </div>
     <%- include("partials/footer"); %>
