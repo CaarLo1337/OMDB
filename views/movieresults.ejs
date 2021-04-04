@@ -19,7 +19,34 @@
             <form>
                 <button formaction="/">search again</button>
             </form>
-
+            <% if (maxPages > 0) { %>
+                <ul>
+                    <% if (currentPage == 1) { %>
+                        <li><a>First</a></li>
+                    <% } else { %>
+                        <li><a href="/results/page=1?movie=<%= movieQuery %>">First</a></li>
+                    <% } %>
+                    <% var i = (Number(currentPage) > 5 ? Number(currentPage) - 4 : 1) %>
+                    <% if (i !== 1) { %>
+                        <li><a>...</a></li>
+                    <% } %>
+                    <% for (; i <= (Number(currentPage) + 4) && i <= maxPages; i++) { %>
+                        <% if (i == currentPage) { %>
+                            <li><a><%= i %></a></li>
+                        <% } else { %>
+                            <li><a href="/results/page=<%= i %>?movie=<%= movieQuery %>"><%= i %></a></li>
+                        <% } %>
+                        <% if (i == Number(currentPage) + 4 && i < maxPages) { %>
+                            <li><a>...</a></li>
+                        <% } %>
+                    <% } %>
+                    <% if (currentPage == maxPages) { %>
+                        <li><a>Last</a></li>
+                    <% } else { %>
+                        <li><a href="/results/page=<%= maxPages %>?movie=<%= movieQuery %>">Last</a></li>
+                    <% } %>
+                </ul>
+            <% } %>
         </div>
     </div>
     <%- include("partials/footer"); %>

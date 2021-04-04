@@ -78,18 +78,23 @@ router.get("/", (req, res) => {
 });*/
 
 
-router.get("/results", (req, res) => {
-    const searchedMovie = 'http://omdbapi.com/?s=' + req.query.movie + '&apikey=' + process.env.API_KEY;
+router.get("/results/page=:page", (req, res) => {
+    const page = req.params.page || 1; //
+    const searchedMovie = 'http://omdbapi.com/?s=' + req.query.movie + '&page=' + page + '&apikey=' + process.env.API_KEY;
     const movieDetails = [];
     axios.get(searchedMovie)
         .then(response => {
             results = response.data;
-            //console.log(results['Search'])
+            maxPages = Math.round(response.data['totalResults'] / 10);
             for(let i=0; i<results['Search'].length; i++) {
                 movieDetails.push(results['Search'][i]);
             }
-            //res.redirect('/');
-            res.render('movieresults', { movieDetails: movieDetails });
+            res.render('movieresults', { 
+                movieDetails: movieDetails, 
+                movieQuery: req.query.movie,
+                currentPage: page,
+                maxPages: maxPages
+            });
         })
         .catch(error => {
             console.log('ops');
