@@ -386,6 +386,28 @@ body {
   text-align: center;
 }
 
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 10px 0;
+}
+
+.pagination li {
+  display: inline;
+}
+
+.pagination a {
+  position: relative;
+  float: left;
+  padding: 3px 6px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  color: #001233;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
 @media (min-width: 768px) {
   .burger {
     display: none;
