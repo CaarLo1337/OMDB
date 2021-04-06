@@ -127,8 +127,8 @@ body {
   color: #ffffff;
   text-decoration: none;
   font-family: 'Roboto', sans-serif;
-  font-weight: bold;
   font-size: 0.8rem;
+  font-weight: bold;
 }
 
 .slider {
@@ -191,13 +191,13 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   height: calc(100vh - 40px);
 }
 
@@ -259,12 +259,12 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .sbtn {
@@ -277,12 +277,12 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #ffffff;
   font-size: 16px;
 }
@@ -387,25 +387,45 @@ body {
 }
 
 .pagination {
-  display: inline-block;
-  padding-left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 10px 0;
 }
 
 .pagination li {
   display: inline;
+  text-align: center;
 }
 
 .pagination a {
+  width: 60px;
   position: relative;
   float: left;
-  padding: 3px 6px;
+  padding: 6px 12px;
   margin-left: -1px;
   line-height: 1.42857143;
-  color: #001233;
   text-decoration: none;
   background-color: #fff;
   border: 1px solid #ddd;
+}
+
+.pagination .currentpage {
+  width: 20px;
+}
+
+.pagination .active {
+  color: #0466c8;
+}
+
+.pagination .disabled {
+  color: #979dac;
 }
 
 @media (min-width: 768px) {

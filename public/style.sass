@@ -8,6 +8,17 @@ $bg2: #0466c8
 $bg3: #002855
 $bg4: #979dac
 
+@mixin flexcenter
+    display: flex
+    justify-content: center
+    align-items: center
+
+@mixin roboto($size, $weight)
+    font-family: 'Roboto', sans-serif
+    font-size: $size
+    font-weight: $weight
+    
+
 //reset css
 *
     margin: 0
@@ -103,23 +114,18 @@ body
     a
         color: $main-color
         text-decoration: none
-        font-family: 'Roboto', sans-serif
-        font-weight: bold
-        font-size: 0.8rem
+        @include roboto(0.8rem, bold)
+        
 
 // '/' movieslider with random cards
 .slider
     height: 500px
-    display: flex
-    justify-content: center
-    align-items: center
+    @include flexcenter
 
 .moviecard
         border-radius: 15px
         background-color: $bg3
-        display: flex
-        justify-content: center
-        align-items: center
+        @include flexcenter
         flex-direction: column
         max-height: 80%
         max-width: 80% 
@@ -142,10 +148,8 @@ body
 
 // '/login'
 .login, .register
-        display: flex
-        justify-content: center
+        @include flexcenter
         flex-direction: column
-        align-items: center
         height: calc(100vh - 40px)
 
 .lcontainer, .rcontainer
@@ -187,9 +191,7 @@ body
 
 
 .btnwrapper
-        display: flex
-        align-items: center
-        justify-content: center
+    @include flexcenter
 
 .sbtn
     margin: 20px
@@ -198,9 +200,7 @@ body
     border-radius: 5px
     border: none
     cursor: pointer
-    display: flex
-    align-items: center
-    justify-content: center
+    @include flexcenter
     color: $main-color    
     font-size: 16px  
 
@@ -225,9 +225,7 @@ body
     font-weight: 400
 
 .content
-    display: flex
-    justify-content: center
-    align-items: center
+    @include flexcenter
 
 .profil
     background-color: $main-color
@@ -259,9 +257,7 @@ body
     @extend .profil
 
 .resultmovie
-    display: flex
-    justify-content: center
-    align-items: center
+    @include flexcenter
     flex-direction: column
     background-color: $bg1
     margin: 5px 5px 15px 5px
@@ -273,23 +269,29 @@ body
         color: white
         padding: 10px
         text-align: center
-    
+
 .pagination
-    display: inline-block
-    padding-left: 0
+    @include flexcenter
     margin: 10px 0
     li
         display: inline
-    a
+        text-align: center
+    a   
+        width: 60px
         position: relative;
         float: left;
-        padding: 3px 6px;
+        padding: 6px 12px;
         margin-left: -1px;
         line-height: 1.42857143;
-        color: $bg1
         text-decoration: none;
         background-color: #fff;
         border: 1px solid #ddd;
+    .currentpage
+        width: 20px
+    .active
+        color: $bg2
+    .disabled
+        color: $bg4
 
 // Tabletview
 @media (min-width: 768px)
@@ -309,9 +311,7 @@ body
 
     // destop nav
     .nav
-        display: flex
-        justify-content: center
-        align-items: center
+        @include flexcenter
         padding-right: 20px
         position: absolute;
         right: 0;

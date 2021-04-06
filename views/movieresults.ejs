@@ -10,33 +10,29 @@
     <%- include("partials/header"); %> 
     <div class="content">
         <div class="resultpage">
-            <% if (maxPages > 0) { %>
-                <ul class="pagination">
-                    <% if (currentPage == 1) { %>
-                        <li><a>Previous</a></li>
-                    <% } else { %>
-                        <li><a href="/results/page=<%= Number(currentPage) - 1 %>?movie=<%= movieQuery %>">Previous</a></li>
-                    <% } %>
-                    
-                        <li><a><%= currentPage %></a></li>
-
-                    <% if (currentPage == maxPages) { %>
-                        <li><a>Next</a></li>
-                    <% } else { %>
-                        <li><a href="/results/page=<%= Number(currentPage) + 1 %>?movie=<%= movieQuery %>">Next</a></li>
-                    <% } %>   
-                </ul>
-            <% } %>
             <% movieDetails.forEach((data)=>{ %>
                 <div class="resultmovie">
                     <img src="<%= data['Poster']%>" onerror="this.src ='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQkmpiE3saxLv17jlQVpffuUAAtU95HJoaPRw&usqp=CAU'">
                     <p><%= data['Title']%></p>
                 </div>    
             <% }); %>
-            <form>
-                <button formaction="/">search again</button>
-            </form>
-            
+            <% if (maxPages > 0) { %>
+                <ul class="pagination">
+                    <% if (currentPage == 1) { %>
+                        <li><a class="disabled">Previous</a></li>
+                    <% } else { %>
+                        <li><a class="active" href="/results/page=<%= Number(currentPage) - 1 %>?movie=<%= movieQuery %>">Previous</a></li>
+                    <% } %>
+                    
+                        <li><a class="currentpage active"><%= currentPage %></a></li>
+
+                    <% if (currentPage == maxPages) { %>
+                        <li><a class="disabled">Next</a></li>
+                    <% } else { %>
+                        <li><a class="active" href="/results/page=<%= Number(currentPage) + 1 %>?movie=<%= movieQuery %>">Next</a></li>
+                    <% } %>   
+                </ul>
+            <% } %>
         </div>
     </div>
     <%- include("partials/footer"); %>
