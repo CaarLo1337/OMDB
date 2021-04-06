@@ -1,0 +1,12 @@
+- @mixin -
+
+flexcenter - center item
+roboto - use fontfamily roboto with size and weight(normal/400 = default)
+__________________________________________________________________________
+- variables -
+
+$main-color: #ffffff // white
+$bg1: #001233 // dark blue
+$bg2: #0466c8 // light blue
+$bg3: #002855 // blue
+$bg4: #979dac // light grey
