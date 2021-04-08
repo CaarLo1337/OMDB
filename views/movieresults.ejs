@@ -18,10 +18,11 @@
         <% movieDetails.forEach((data)=>{ %>
         <div class="resultmovie">
           <img
-            src="<%= data['Poster']%>"
+            src="<%= data['Posster']%>" //error
             onerror="this.src ='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQkmpiE3saxLv17jlQVpffuUAAtU95HJoaPRw&usqp=CAU'"
           />
           <p><%= data['Title']%></p>
+          <button><i class="fas fa-plus"></i></button>
         </div>
         <% }); %> <% if (maxPages > 0) { %>
         <ul class="pagination">

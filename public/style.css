@@ -428,6 +428,17 @@ body {
   text-align: center;
 }
 
+.resultmovie button {
+  margin: 5px 0 15px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.resultmovie button i {
+  color: #001233;
+}
+
 .pagination {
   display: -webkit-box;
   display: -ms-flexbox;
