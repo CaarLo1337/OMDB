@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
-    <script src="https://kit.fontawesome.com/af637b2ae8.js" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <script
+      src="https://kit.fontawesome.com/af637b2ae8.js"
+      crossorigin="anonymous"
+    ></script>
     <title>OMDB Test</title>
     <script src="/main.js"></script>
-</head>
-<body>
-    <%- include("partials/header"); %> 
+  </head>
+  <body>
+    <%- include("partials/header"); %>
     <div class="content">
-        <div class="slider">
-            <div class="moviecard">
-                <% if(result['Response']==='True'){ %>
-                    <div id="data" hidden><%= JSON.stringify(randomDetails) %></div>
-                    <img src="<%= result['Poster']%>" onerror="this.src ='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQkmpiE3saxLv17jlQVpffuUAAtU95HJoaPRw&usqp=CAU'">
-                    <p class="title"><%= result['Title']%></p>
-                    <p class="mtext">IMDB Rating: <%= result['imdbRating']%></p>
-                <% } else{ %>
-                    <h1>error</h1>
-                <% } %>  
-            </div>
+      <div class="slider">
+        <div class="moviecard">
+          <% if(result['Response']==='True'){ %>
+          <div id="data" hidden><%= JSON.stringify(randomDetails) %></div>
+          <img
+            src="<%= result['Poster']%>"
+            onerror="this.src ='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQkmpiE3saxLv17jlQVpffuUAAtU95HJoaPRw&usqp=CAU'"
+          />
+          <p class="title"><%= result['Title']%></p>
+          <p class="mtext">IMDB Rating: <%= result['imdbRating']%></p>
+          <% } else{ %>
+          <h1>error</h1>
+          <% } %>
         </div>
-        <!--<div class="moviesearch">
+      </div>
+      <!--<div class="moviesearch">
             <form action="/results" method="GET">
                 <input type="text" name="movie" placeholder="search movie here" autocomplete="off" required>
                 <button type="submit"><i class="fas fa-search"></i></button>
             </form>
         </div> -->
-        
     </div>
-    
+
     <%- include("partials/footer"); %>
-</body>
+  </body>
 </html>
